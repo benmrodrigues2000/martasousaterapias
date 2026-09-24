@@ -39,7 +39,7 @@
       bookingText: "Para concluir a marcação, é só enviar a mensagem ao WhatsApp da Marta — ela confirma a disponibilidade e fecha a sua sessão.",
       openWa: "Abrir WhatsApp",
       sendEmail: "Enviar por email",
-      savedNote: "O pedido ficou guardado na Área de Clientes deste dispositivo.",
+      savedNote: "O pedido ficou guardado na Área de Clientes deste dispositivo (veja o código na mensagem).",
       waDefault: "Olá Marta! Vi o seu site e gostaria de saber mais sobre as sessões.",
       buildTitle: "Olá Marta! Gostaria de solicitar uma marcação.",
       labelName: "Nome", labelPhone: "Telefone", labelEmail: "Email",
@@ -68,7 +68,7 @@
       bookingText: "To complete your booking, just send the message to Marta on WhatsApp — she will confirm availability and schedule your session.",
       openWa: "Open WhatsApp",
       sendEmail: "Send by email",
-      savedNote: "Your request is saved in the Client Area on this device.",
+      savedNote: "Your request is saved in the Client Area on this device (check the message for the code).",
       waDefault: "Hi Marta! I found your website and would love to know more about your sessions.",
       buildTitle: "Hi Marta! I would like to request a booking.",
       labelName: "Name", labelPhone: "Phone", labelEmail: "Email",
@@ -295,6 +295,29 @@
       var k="__test__"; localStorage.setItem(k,k); localStorage.removeItem(k); return true;
     } catch(e){ return false; }
   }
+  var SESSION_KEY = "__ca_session__";
+  function caSessionActive() {
+    try { return !!((typeof localStorage !== "undefined") && localStorage.getItem(SESSION_KEY)); } catch(e){ return false; }
+  }
+  function caSessionToken() {
+    try { return (typeof localStorage !== "undefined") ? localStorage.getItem(SESSION_KEY + "_token") || "" : ""; } catch(e){ return ""; }
+  }
+  function caSetSession(tokenValue) {
+    try { if (typeof localStorage !== "undefined") { localStorage.setItem(SESSION_KEY, "1"); if (tokenValue) localStorage.setItem(SESSION_KEY + "_token", tokenValue); } } catch(e){}
+  }
+  function generateBookingToken(existingList) {
+    existingList = existingList || [];
+    var existing = existingList.map(function(x){ return String(x.token || "").toUpperCase(); });
+    for (var i = 0; i < 100; i++) {
+      var code = "MS" + String(Math.floor(1000 + Math.random() * 9000));
+      if (existing.indexOf(code) === -1) return code;
+    }
+    return "MS" + String(Math.floor(1000 + Math.random() * 9000));
+  }
+
+  function caClearSession() {
+    try { if (typeof localStorage !== "undefined") { localStorage.removeItem(SESSION_KEY); localStorage.removeItem(SESSION_KEY + "_token"); } } catch(e){}
+  }
   function loadBookings() {
     if (!canUseStorage()) return [];
     try { return JSON.parse(localStorage.getItem(STORE_KEY) || "[]"); }
@@ -306,6 +329,7 @@
   }
   function buildBookingMsg(b) {
     var lines = [t.buildTitle, ""];
+    if (b.token) lines.push("• " + (isEN ? "Booking code: " : "Código da reserva: ") + b.token);
     lines.push("• " + t.labelName + ": " + b.name);
     lines.push("• " + t.labelPhone + ": " + b.phone);
     if (b.email) lines.push("• " + t.labelEmail + ": " + b.email);
@@ -397,6 +421,7 @@
         id: Date.now(),
         name: name, phone: phone, email: email,
         service: service, date: date, time: time, pref: pref, msg: msg,
+        token: generateBookingToken(loadBookings()),
         created: new Date().toISOString()
       };
 
@@ -426,7 +451,7 @@
         var atWord = isEN ? " at " : " às ";
         sSummary.innerHTML =
           "<strong>" + esc(service) + "</strong> · " + esc(fmtDate(date)) + atWord + esc(time) +
-          " · " + esc(name);
+          " · " + esc(name) + (booking.token ? (isEN ? " · Code " : " · Código ") + esc(booking.token) : "");
       }
       if (sWa) sWa.href = waHref;
       if (sMail) sMail.href = mailHref;
@@ -457,6 +482,9 @@
     var wrap = el("caBookings");
     if (!wrap) return;
     var list = loadBookings();
+    if (currentClientToken) {
+      list = list.filter(function(b){ return (String(b.token || "").toUpperCase()) === currentClientToken.toUpperCase(); });
+    }
     if (!list.length) {
       var bookLink = isEN ? "booking.html" : "marcacao.html";
       wrap.innerHTML =
@@ -466,11 +494,14 @@
     }
     var html = "";
     list.forEach(function (b) {
+      var clientName = b.name ? esc(b.name) : "";
+      var extra = (clientName ? '<div class="bi-client">' + clientName + '</div>' : "");
       html +=
         '<div class="booking-item">' +
           '<div class="bi-top">' +
             "<div>" +
               "<h4>" + esc(b.service) + "</h4>" +
+              extra +
               '<div class="bi-when">' + esc(fmtDate(b.date)) + " · " + esc(b.time) + "</div>" +
             "</div>" +
             '<span class="chip">' + esc(t.caStatus) + "</span>" +
@@ -491,16 +522,30 @@
     });
   }
 
+  var currentClientToken = "";
+
   if (caGate && caPanel && caCode) {
+    // Restore session if active
+    if (caSessionActive()) {
+      currentClientToken = caSessionToken();
+      caGate.style.display = "none";
+      caPanel.classList.add("show");
+      renderBookings();
+    }
+
     var caForm = caGate.querySelector("form");
     if (caForm) {
       caForm.addEventListener("submit", function (e) {
         e.preventDefault();
         var codeVal = (caCode.value || "").trim().toUpperCase();
-        var expected = (typeof SITE !== "undefined" && SITE.clientCode) ? SITE.clientCode.toUpperCase() : "MARTA2026";
-        if (codeVal === expected) {
+        var all = loadBookings();
+        var match = all.some(function(b){ return (String(b.token || "").toUpperCase()) === codeVal; });
+        var isMaster = (codeVal === "MS2026");
+        if (match || isMaster) {
+          currentClientToken = isMaster ? "" : codeVal;
           caGate.style.display = "none";
           caPanel.classList.add("show");
+          caSetSession(currentClientToken);
           if (caError) caError.classList.remove("show");
           renderBookings();
         } else {
@@ -518,6 +563,8 @@
         caPanel.classList.remove("show");
         caGate.style.display = "";
         caCode.value = "";
+        caClearSession();
+        currentClientToken = "";
         if (caError) caError.classList.remove("show");
       });
     }

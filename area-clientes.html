@@ -49,12 +49,15 @@
         <!-- PORTA (código) -->
         <div class="ca-gate" id="caGate">
           <div class="form-card" style="text-align:center">
-            <h2>Introduza o seu código</h2>
-            <p class="muted small">O código de acesso é partilhado pela Marta aquando da marcação.</p>
+            <h2>Introduza o código da reserva</h2>
+            <p class="muted small">O código da reserva é enviado pela Marta no WhatsApp quando confirma a marcação.</p>
+            <div class="ca-hint" style="margin-top:10px;font-size:.82rem;color:var(--muted)">
+              Se ainda não recebeu o código, verifique a mensagem de confirmação da Marta.
+            </div>
             <form>
               <div class="field code-field">
-                <label for="caCode">Código de acesso</label>
-                <input type="text" id="caCode" name="code" autocomplete="off" placeholder="••••••••">
+                <label for="caCode">Código da reserva</label>
+                <input type="text" id="caCode" name="code" autocomplete="off" placeholder="••••••••" aria-label="Código de acesso" inputmode="verbatim">
               </div>
               <div class="form-error" id="caError"></div>
               <button type="submit" class="btn btn-primary btn-block">Entrar</button>
@@ -65,7 +68,10 @@
         <!-- CONTEÚDO -->
         <div class="ca-panel" id="caPanel">
           <div class="ca-head">
-            <h2>Bem-vinda(o) de volta</h2>
+            <div>
+              <h2>Bem-vinda(o) de volta</h2>
+              <p class="small muted" style="margin:4px 0 0">Aqui encontra os seus pedidos e a preparação para a próxima sessão.</p>
+            </div>
             <button class="btn btn-ghost btn-sm" id="caLogout" type="button">Terminar sessão</button>
           </div>
 
