@@ -16,7 +16,8 @@ css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
 js/symbols.js         Animação de fundo (símbolos de Reiki e Tarot dos Anjos)
-images/               Imagens (hero, sobre, g1–g5)
+images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
+                    principios-reiki.jpg) + ambiente (g2/g4/g5)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
 ```
