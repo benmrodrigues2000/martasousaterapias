@@ -48,12 +48,12 @@
 
         <div class="ca-gate" id="caGate">
           <div class="form-card" style="text-align:center">
-            <h2>Enter your code</h2>
-            <p class="muted small">The access code is shared by Marta when your session is booked.</p>
+            <h2>Enter your booking code</h2>
+            <p class="muted small">The booking code is shared by Marta on WhatsApp when your session is confirmed.</p><div class="ca-hint" style="margin-top:10px;font-size:.82rem;color:var(--muted)">If you haven't received the code yet, check Marta's confirmation message.</div>
             <form>
               <div class="field code-field">
-                <label for="caCode">Access code</label>
-                <input type="text" id="caCode" name="code" autocomplete="off" placeholder="••••••••">
+                <label for="caCode">Booking code</label>
+                <input type="text" id="caCode" name="code" autocomplete="off" placeholder="••••••••" aria-label="Booking code" inputmode="verbatim">
               </div>
               <div class="form-error" id="caError"></div>
               <button type="submit" class="btn btn-primary btn-block">Sign in</button>

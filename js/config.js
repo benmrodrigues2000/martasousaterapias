@@ -21,8 +21,8 @@ const SITE = {
   instagram: "https://www.instagram.com/martasousaterapias",
   facebook:  "https://www.facebook.com/martasousaterapias",
 
-  /* Área de clientes (TODO: escolher um código só seu, ex.: MS-2026) */
-  clientCode: "MARTA2026",
+  /* Área de clientes (código partilhado pela Marta ao confirmar) */
+  clientCode: "MS2026",
 
   /* Serviços usados no formulário de marcação (nome PT = texto enviado no WhatsApp) */
   services: [
