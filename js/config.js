@@ -1,7 +1,8 @@
 /* ============================================================
    Marta Sousa Terapias — config.js
    >>> PERSONALIZE ESTE FICHEIRO ANTES DE PUBLICAR <<<
-   (telefonos, email, endereço, redes sociais, código de clientes)
+   É a única fonte de valores: telefone, email, redes sociais,
+   código da Área de Clientes, serviços, preços e horários.
    ============================================================ */
 
 const SITE = {
@@ -21,17 +22,20 @@ const SITE = {
   instagram: "https://www.instagram.com/martasousaterapias",
   facebook:  "https://www.facebook.com/martasousaterapias",
 
-  /* Área de clientes (código partilhado pela Marta ao confirmar) */
+  /* Área de Clientes — código partilhado pela Marta no WhatsApp
+     ao confirmar a marcação (também exibido na página de marcação). */
   clientCode: "MS2026",
 
-  /* Serviços usados no formulário de marcação (nome PT = texto enviado no WhatsApp) */
+  /* Serviços do formulário de marcação — o nome (pt/en) é o que
+     aparece na mensagem de WhatsApp; minutos e preço aparecem no
+     dropdown "Serviço". */
   services: [
-    { pt: "Sessão individual de Reiki", en: "Individual Reiki session" },
-    { pt: "Reiki à distância",          en: "Distance Reiki" },
-    { pt: "Tarot dos Anjos",            en: "Angel Tarot reading" },
-    { pt: "Reiki + Tarot dos Anjos",    en: "Reiki + Angel Tarot" }
+    { pt: "Sessão individual de Reiki", en: "Individual Reiki session", minutes: 60, price: 50 },
+    { pt: "Reiki à distância",          en: "Distance Reiki",           minutes: 45, price: 35 },
+    { pt: "Tarot dos Anjos",            en: "Angel Tarot reading",      minutes: 50, price: 35 },
+    { pt: "Reiki + Tarot dos Anjos",    en: "Reiki + Angel Tarot",      minutes: 90, price: 70 }
   ],
 
   /* Horas sugeridas no formulário (a Marta confirma a disponibilidade) */
-  timeSlots: ["10:00","11:00","12:00","14:00","15:00","16:00","17:00","18:00"]
+  timeSlots: ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
 };

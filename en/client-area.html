@@ -43,13 +43,14 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top:20px">
+    <section class="section section--20">
       <div class="container">
 
         <div class="ca-gate" id="caGate">
-          <div class="form-card" style="text-align:center">
+          <div class="form-card">
             <h2>Enter your booking code</h2>
-            <p class="muted small">The booking code is shared by Marta on WhatsApp when your session is confirmed.</p><div class="ca-hint" style="margin-top:10px;font-size:.82rem;color:var(--muted)">If you haven't received the code yet, check Marta's confirmation message.</div>
+            <p class="muted small">The booking code is shared by Marta on WhatsApp when your session is confirmed.</p>
+            <div class="ca-hint">If you haven't received the code yet, check Marta's confirmation message.</div>
             <form>
               <div class="field code-field">
                 <label for="caCode">Booking code</label>
@@ -68,14 +69,14 @@
           </div>
 
           <div class="ca-grid">
-            <div>
-              <h3 style="margin-bottom:18px">Your bookings</h3>
+            <div class="ca-col">
+              <h3>Your bookings</h3>
               <div id="caBookings"></div>
-              <p class="small muted" style="margin-top:8px">Requests appear here when they're made on this device.</p>
+              <p class="small muted ca-note">Requests appear here when they're made on this device.</p>
             </div>
 
-            <div>
-              <div class="tips-card" style="margin-bottom:18px">
+            <div class="ca-col">
+              <div class="tips-card">
                 <h3>Preparing for your session</h3>
                 <ul>
                   <li>Wear comfortable, light, non-restrictive clothes</li>
@@ -163,6 +164,5 @@
 
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
-  <script src="../js/symbols.js" defer></script>
 </body>
 </html>
