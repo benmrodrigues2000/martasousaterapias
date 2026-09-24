@@ -1,7 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Marta Sousa Terapias">
-  <circle cx="24" cy="24" r="23" fill="#F4F0FD"/>
-  <path d="M24 8.5c3.6 4.3 5.2 8.2 5.2 11.8 0 4.6-2.3 7.7-5.2 9.3-2.9-1.6-5.2-4.7-5.2-9.3 0-3.6 1.6-7.5 5.2-11.8z" fill="#A78BFA"/>
-  <path d="M11.6 20.3c4.7.3 8.1 2.1 10 5.2-2.7 2.7-6.6 3.5-10.4 2.5-1.3-2.5-1.3-5.2.4-7.7z" fill="#C9B8F5"/>
-  <path d="M36.4 20.3c-4.7.3-8.1 2.1-10 5.2 2.7 2.7 6.6 3.5 10.4 2.5 1.3-2.5 1.3-5.2-.4-7.7z" fill="#C9B8F5"/>
-  <path d="M15 33c2.7 1.6 5.7 2.4 9 2.4s6.3-.8 9-2.4" stroke="#8B6CF0" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Marta Sousa Terapias">
+  <title>Marta Sousa Terapias</title>
+  <circle cx="120" cy="120" r="114" fill="#F3F1F6"/>
+  <circle cx="120" cy="120" r="114" fill="none" stroke="#1C1A1E" stroke-width="2"/>
+  <defs>
+    <path id="mst-arc" d="M 38,132 A 82,82 0 0 1 202,132" fill="none"/>
+  </defs>
+  <text font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="22" font-weight="500" letter-spacing="5" fill="#1C1A1E">
+    <textPath href="#mst-arc" startOffset="50%" text-anchor="middle">MARTA SOUSA</textPath>
+  </text>
+  <!-- lotus -->
+  <g fill="none" stroke="#1C1A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120,74 C126,86 126,102 120,114 C114,102 114,86 120,74 Z"/>
+    <path d="M122,114 C132,110 141,102 144,92 C134,94 126,104 122,114 Z"/>
+    <path d="M118,114 C108,110 99,102 96,92 C106,94 114,104 118,114 Z"/>
+    <path d="M123,112 C135,112 147,106 153,97 C143,99 131,105 123,112 Z"/>
+    <path d="M117,112 C105,112 93,106 87,97 C97,99 109,105 117,112 Z"/>
+    <path d="M102,119 Q120,127 138,119"/>
+  </g>
+  <!-- sparkles & dots -->
+  <g fill="#1C1A1E">
+    <circle cx="92" cy="86" r="1.6"/>
+    <circle cx="148" cy="86" r="1.6"/>
+    <circle cx="82" cy="104" r="1.3"/>
+    <circle cx="158" cy="104" r="1.3"/>
+    <path d="M120,58 l1.2,2.8 2.8,1.2 -2.8,1.2 -1.2,2.8 -1.2,-2.8 -2.8,-1.2 2.8,-1.2 Z"/>
+    <path d="M70,128 l1,2.4 2.4,1 -2.4,1 -1,2.4 -1,-2.4 -2.4,-1 2.4,-1 Z"/>
+    <path d="M170,128 l1,2.4 2.4,1 -2.4,1 -1,2.4 -1,-2.4 -2.4,-1 2.4,-1 Z"/>
+  </g>
+  <!-- cupped hands -->
+  <g fill="none" stroke="#1C1A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g id="mst-hand">
+      <path d="M162,156 C154,146 148,134 146,124 Q145,119 141,120 C137,128 133,140 135,149 C137,158 145,163 153,163 L162,156"/>
+      <path d="M145,131 L138,133"/>
+      <path d="M144,139 L136,140"/>
+      <path d="M157,155 C152,153 148,149 146,144"/>
+    </g>
+    <use href="#mst-hand" transform="translate(240,0) scale(-1,1)"/>
+  </g>
+  <text x="122" y="198" text-anchor="middle" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="20" font-weight="500" letter-spacing="6" fill="#1C1A1E">TERAPIAS</text>
 </svg>
