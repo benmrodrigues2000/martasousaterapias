@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="12" fill="#F4F0FD"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Marta Sousa Terapias">
+  <circle cx="24" cy="24" r="23" fill="#F4F0FD"/>
   <path d="M24 8.5c3.6 4.3 5.2 8.2 5.2 11.8 0 4.6-2.3 7.7-5.2 9.3-2.9-1.6-5.2-4.7-5.2-9.3 0-3.6 1.6-7.5 5.2-11.8z" fill="#A78BFA"/>
   <path d="M11.6 20.3c4.7.3 8.1 2.1 10 5.2-2.7 2.7-6.6 3.5-10.4 2.5-1.3-2.5-1.3-5.2.4-7.7z" fill="#C9B8F5"/>
   <path d="M36.4 20.3c-4.7.3-8.1 2.1-10 5.2 2.7 2.7 6.6 3.5 10.4 2.5 1.3-2.5 1.3-5.2-.4-7.7z" fill="#C9B8F5"/>

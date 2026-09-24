@@ -100,7 +100,8 @@ em{font-style:italic;color:var(--lilac-deep)}
 }
 .header-inner{display:flex;align-items:center;gap:26px;height:78px}
 .brand{display:flex;align-items:center;gap:11px}
-.brand-mark{width:42px;height:42px;flex:none}
+.brand-mark{width:42px;height:42px;flex:none;display:block;object-fit:contain}
+img.brand-mark{border-radius:50%}
 .brand-text{display:flex;flex-direction:column;line-height:1}
 .brand-text strong{
   font-family:var(--font-head);font-size:1.32rem;font-weight:600;color:var(--ink);letter-spacing:.02em;
