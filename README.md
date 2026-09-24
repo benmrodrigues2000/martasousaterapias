@@ -16,7 +16,8 @@ css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
 js/symbols.js         Animação de fundo (símbolos de Reiki e Tarot dos Anjos)
-images/               Imagens (hero, sobre, g1–g5)
+images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
+                    principios-reiki.jpg) + ambiente (g2/g4/g5)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
 ```
@@ -58,11 +59,10 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 4. **Preços** — os valores (50€/35€/35€/70€) são indicativos. Ajuste em
    `servicos.html` e `en/services.html` (textos dos serviços + tabela de preços),
    e também nos `<option>` de `marcacao.html` / `en/booking.html`.
-5. **Logótipo** — o cabeçalho usa um logótipo tipográfico (lotus + "Marta Sousa
-   Terapias") como provisório. Para usar o logótipo próprio, substitua o bloco
-   `<svg class="brand-mark">…</svg>` por
-   `<img class="brand-mark" src="images/logo.png" alt="Marta Sousa Terapias">`
-   (coloque o ficheiro em `images/` e, se quiser, reduza a altura em `css/style.css`).
+5. **Logótipo** — o cabeçalho e o rodapé usam o emblema oficial em
+   `images/logo.svg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
+   em `css/style.css`). Para trocar pelo ficheiro original, basta substituir
+   `images/logo.svg` mantendo o nome.
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade.
 

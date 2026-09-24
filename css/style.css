@@ -100,15 +100,8 @@ em{font-style:italic;color:var(--lilac-deep)}
 }
 .header-inner{display:flex;align-items:center;gap:26px;height:78px}
 .brand{display:flex;align-items:center;gap:11px}
-.brand-mark{width:42px;height:42px;flex:none;display:block;object-fit:contain}
+.brand-mark{width:56px;height:56px;flex:none;display:block;object-fit:contain}
 img.brand-mark{border-radius:50%}
-.brand-text{display:flex;flex-direction:column;line-height:1}
-.brand-text strong{
-  font-family:var(--font-head);font-size:1.32rem;font-weight:600;color:var(--ink);letter-spacing:.02em;
-}
-.brand-text small{
-  font-size:.56rem;letter-spacing:.42em;color:var(--faint);font-weight:500;margin-top:4px;text-transform:uppercase;
-}
 .main-nav{display:flex;gap:26px;margin-left:auto;align-items:center}
 .main-nav a{
   position:relative;padding:7px 0;font-size:.94rem;color:#3B3540;font-weight:400;
@@ -183,6 +176,22 @@ img.brand-mark{border-radius:50%}
   display:grid;place-items:center;margin-top:2px;
 }
 .mini-list .tick svg{width:12px;height:12px;stroke:var(--lilac-deep);stroke-width:2.6;fill:none}
+
+/* ---------- princípios do Reiki ---------- */
+.principios-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.principios-media img{border-radius:var(--radius-lg);box-shadow:var(--shadow);width:100%;aspect-ratio:4/3;object-fit:cover}
+.principios-copy > p{color:#453F4B}
+.principios-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.principios-list li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;font-size:.98rem;color:#3B3540}
+.principios-list li strong{font-family:var(--font-head);color:var(--lilac-deep);font-size:1.1rem;font-weight:600}
+.principios-sign{font-family:var(--font-head);font-size:1.45rem;color:var(--lilac-deep);margin:20px 0 0}
+
+/* ---------- foto lateral (marcação / contacto) ---------- */
+.side-photo{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.side-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 28%}
+.side-photo > div{padding:16px 20px 18px}
+.side-photo strong{display:block;font-family:var(--font-head);font-size:1.22rem;color:var(--ink);font-weight:600}
+.side-photo span{font-size:.87rem;color:var(--muted)}
 
 /* ---------- cards de valor ---------- */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -383,6 +392,9 @@ img.brand-mark{border-radius:50%}
   color:#fff;font-size:.85rem;letter-spacing:.05em;opacity:0;transition:opacity .35s;
 }
 .gallery figure:hover figcaption{opacity:1}
+@media (hover:none){
+  .gallery figcaption{opacity:1}
+}
 
 /* ---------- área de clientes ---------- */
 .ca-gate{max-width:470px;margin:44px auto 0;text-align:center}
@@ -425,6 +437,7 @@ img.brand-mark{border-radius:50%}
 /* ---------- footer ---------- */
 .site-footer{background:rgba(251,250,253,.93);border-top:1px solid var(--line-soft);margin-top:40px}
 .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:44px;padding:58px 0 40px}
+.site-footer .brand-mark{width:84px;height:84px}
 .footer-grid .brand{margin-bottom:14px}
 .f-tag{font-size:.92rem;color:var(--muted);max-width:34ch}
 .f-h{
@@ -512,7 +525,7 @@ main,.site-footer{position:relative;z-index:1}
 
 /* ---------- responsivo ---------- */
 @media (max-width:980px){
-  .hero-grid,.about-grid,.service-block,.contact-grid,.booking-layout,.ca-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid,.about-grid,.principios-grid,.service-block,.contact-grid,.booking-layout,.ca-grid{grid-template-columns:1fr;gap:40px}
   .service-block.reverse .svc-img{order:0}
   .hero-media > img{aspect-ratio:16/10}
   .about-media img{aspect-ratio:16/11}
