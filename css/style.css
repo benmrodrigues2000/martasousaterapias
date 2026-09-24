@@ -137,7 +137,7 @@ em{font-style:italic;color:var(--lilac-deep)}
   padding:70px 0 92px;
   background:
     radial-gradient(900px 420px at 85% -10%, rgba(167,139,250,.14), transparent 60%),
-    linear-gradient(180deg,#F8F5FE 0%, #FFFFFF 62%);
+    linear-gradient(180deg,rgba(248,245,254,.92) 0%, rgba(255,255,255,.72) 62%);
 }
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
 .hero h1{margin-bottom:.35em}
@@ -167,7 +167,7 @@ em{font-style:italic;color:var(--lilac-deep)}
   padding:66px 0 46px;text-align:center;
   background:
     radial-gradient(760px 320px at 15% -20%, rgba(167,139,250,.16), transparent 60%),
-    linear-gradient(180deg,#F8F5FE 0%, #FFFFFF 80%);
+    linear-gradient(180deg,rgba(248,245,254,.92) 0%, rgba(255,255,255,.72) 80%);
 }
 .page-hero .lead{margin:6px auto 0}
 
@@ -422,7 +422,7 @@ em{font-style:italic;color:var(--lilac-deep)}
 .tips-card li::before{content:"✦";color:var(--lilac-strong);font-size:.8rem;line-height:1.9}
 
 /* ---------- footer ---------- */
-.site-footer{background:#FBFAFD;border-top:1px solid var(--line-soft);margin-top:40px}
+.site-footer{background:rgba(251,250,253,.93);border-top:1px solid var(--line-soft);margin-top:40px}
 .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:44px;padding:58px 0 40px}
 .footer-grid .brand{margin-bottom:14px}
 .f-tag{font-size:.92rem;color:var(--muted);max-width:34ch}
@@ -463,12 +463,50 @@ em{font-style:italic;color:var(--lilac-deep)}
 }
 @keyframes waPulse{0%{transform:scale(.85);opacity:1}70%,100%{transform:scale(1.25);opacity:0}}
 
+/* ---------- símbolos de Reiki & Tarot dos Anjos a flutuar (js/symbols.js) ---------- */
+main,.site-footer{position:relative;z-index:1}
+.symbol-layer{
+  position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+}
+.sym{
+  position:absolute;top:0;
+  will-change:transform,opacity;
+  animation:symRise var(--dur,34s) linear forwards;
+}
+.sym-in{
+  display:block;transform-origin:50% 50%;
+  animation:symSway var(--sway-dur,7s) ease-in-out infinite alternate;
+}
+.sym--tw .sym-in{
+  animation:
+    symSway var(--sway-dur,7s) ease-in-out infinite alternate,
+    symTwinkle var(--tw-dur,4s) ease-in-out infinite alternate;
+}
+.sym svg{display:block;width:var(--size,64px);height:var(--size,64px)}
+@keyframes symRise{
+  0%{transform:translate3d(0,110vh,0);opacity:0}
+  7%{opacity:var(--op,.12)}
+  88%{opacity:var(--op,.12)}
+  100%{transform:translate3d(0,-28vh,0);opacity:0}
+}
+@keyframes symSway{
+  from{transform:translateX(calc(var(--amp,18px) * -1)) rotate(var(--r1,0deg))}
+  to{transform:translateX(var(--amp,18px)) rotate(var(--r2,0deg))}
+}
+@keyframes symTwinkle{
+  from{opacity:.6}
+  to{opacity:1}
+}
+.sym-paused .sym,.sym-paused .sym-in{animation-play-state:paused}
+
 /* ---------- reveal on scroll ---------- */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
+  .sym,.sym-in{animation:none!important}
+  .sym{opacity:.1;transform:none}
 }
 
 /* ---------- responsivo ---------- */

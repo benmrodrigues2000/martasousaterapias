@@ -15,12 +15,20 @@ en/                   Versão em inglês das 6 páginas
 css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
+js/symbols.js         Animação de fundo (símbolos de Reiki e Tarot dos Anjos)
 images/               Imagens (hero, sobre, g1–g5)
 favicon.svg           Ícone
+.nojekyll             GitHub Pages (serve os ficheiros tal como estão)
 ```
 
 ## O que já funciona
 
+- **Animação de fundo**: símbolos de Reiki (Cho Ku Rei, Sei He Ki, Hon Sha Ze
+  Sho Nen, Dai Ko Myo, Raku, Enso) e símbolos de Tarot dos Anjos (anjo, coração
+  alado, trombeta, estrela, lua, carta, pomba, sol) flutuam suavemente pelo
+  fundo do site, em todas as páginas. É só decoração (`aria-hidden`), não
+  captura cliques e respeita `prefers-reduced-motion` (desativado para quem
+  prefere menos movimento). Ver `js/symbols.js`.
 - **Marcação online**: o formulário prepara automaticamente uma mensagem de
   WhatsApp com todos os dados (nome, serviço, data, hora…). A Marta só tem de
   enviar a mensagem para validar o pedido, e responde ao cliente para
@@ -58,16 +66,26 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade.
 
-## Como publicar (gratuito)
+## Como publicar (gratuito) — GitHub Pages
 
-Opção mais simples — **Netlify** (sem precisar de programar):
-1. Crie uma conta gratuita em https://www.netlify.com
-2. Arraste a pasta inteira do site para https://app.netlify.com/drop
-3. Pronto — o site fica online com um endereço `https://….netlify.app`
-4. (Opcional) ligue um domínio próprio, ex. `martasousaterapias.pt`
+O site está preparado para o **GitHub Pages** (ficheiro `.nojekyll` incluído;
+todos os caminhos de imagens/CSS/JS são relativos, por isso funciona também em
+`https://<utilizador>.github.io/martasousaterapias/`).
 
-Alternativas equivalentes: GitHub Pages, Vercel ou Cloudflare Pages
-(também com arrastar e largar / upload da pasta).
+Para ativar (uma só vez, no GitHub):
+1. Abra o repositório → **Settings** → **Pages**
+2. Em **Source** escolha **Deploy from a branch**
+3. Escolha a branch com o conteúdo do site (ex.: `main` após aceitar o pull
+   request, ou a branch de trabalho) e pasta **/ (root)** → **Save**
+4. Ao fim de 1–2 minutos o site fica online em
+   `https://benmrodrigues2000.github.io/martasousaterapias/`
+   (o endereço exato aparece em Settings → Pages)
+
+> O GitHub Pages gratuito exige que o repositório esteja **público**
+> (Settings → General → Danger Zone → Change visibility → Public).
+
+Alternativas equivalentes: Netlify (arrastar a pasta para
+https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 
 > Nota: o domínio `.pt` pode ser registado em registos.pt; os domínios
 > `.com`/`.pt` podem ser obtidos em registadores como IONOS, OVH ou 19A.
@@ -88,6 +106,8 @@ Alternativas equivalentes: GitHub Pages, Vercel ou Cloudflare Pages
 ## Testes rápidos
 
 - Abrir `index.html` no navegador: navegação, botões, galeria, FAQ.
+- Animação de fundo: símbolos de Reiki e de Tarot dos Anjos devem flutuar
+  lentamente pelo fundo (bem ténues, sem interferir com o texto).
 - Marcar sessão: preencher e submeter → deve abrir o WhatsApp com a mensagem.
 - Área de Clientes: código `MARTA2026` (ou o que definir em `config.js`).
 - Alternância PT ⇄ EN nos cabeçalhos.
