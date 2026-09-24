@@ -42,7 +42,7 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top:30px">
+    <section class="section section--30">
       <div class="container">
         <div class="booking-layout">
 
@@ -67,11 +67,7 @@
               <div class="field">
                 <label for="bkService">Service *</label>
                 <select id="bkService" name="service" required>
-                  <option value="" data-pt="" data-en="">Choose a service…</option>
-                  <option value="Individual Reiki session" data-pt="Sessão individual de Reiki" data-en="Individual Reiki session">Reiki — individual session · 60 min · €50</option>
-                  <option value="Distance Reiki" data-pt="Reiki à distância" data-en="Distance Reiki">Distance Reiki · 45 min · €35</option>
-                  <option value="Angel Tarot reading" data-pt="Tarot dos Anjos" data-en="Angel Tarot reading">Angel Tarot · 50 min · €35</option>
-                  <option value="Reiki + Angel Tarot" data-pt="Reiki + Tarot dos Anjos" data-en="Reiki + Angel Tarot">Reiki + Angel Tarot · 90 min · €70</option>
+                  <option value="" selected>Choose a service…</option>
                 </select>
               </div>
               <div class="form-row">
@@ -106,7 +102,7 @@
               <div class="success-panel" id="bookingSuccess" hidden>
                 <h3 id="bkSuccessTitle"></h3>
                 <p id="bkSuccessText"></p>
-                <p id="bkSuccessSummary" class="small" style="font-weight:500"></p>
+                <p id="bkSuccessSummary" class="small success-summary"></p>
                 <div class="success-actions">
                   <a class="btn btn-primary btn-sm" id="bkSuccessWa" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
                   <a class="btn btn-ghost btn-sm" id="bkSuccessMail" href="#">Send by email</a>
@@ -144,7 +140,7 @@
             </div>
             <div class="side-card reveal">
               <h3>After your request</h3>
-              <p>Your request is saved in the <a href="client-area.html">Client Area</a> on this device (code <strong>MS2026</strong>), where you can review and resend it any time.</p>
+              <p>Your request is saved in the <a href="client-area.html">Client Area</a> on this device (code <strong data-client-code>MS2026</strong>), where you can review and resend it any time.</p>
             </div>
           </aside>
 
@@ -215,6 +211,5 @@
 
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
-  <script src="../js/symbols.js" defer></script>
 </body>
 </html>

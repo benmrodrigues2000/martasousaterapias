@@ -68,11 +68,22 @@ em{font-style:italic;color:var(--lilac-deep)}
 }
 .lead{font-size:1.13rem;color:#4A4450;max-width:60ch}
 .section{padding:88px 0}
+.section--10{padding-top:10px}
+.section--20{padding-top:20px}
+.section--30{padding-top:30px}
+.section--40{padding-top:40px}
 .section-head{max-width:640px;margin-bottom:46px}
 .section-head.center{margin-inline:auto;text-align:center}
 .section-head p{color:var(--muted)}
 .muted{color:var(--muted)}
 .small{font-size:.85rem}
+.text-center{text-align:center}
+/* linha de ligação CTA no centro de uma secção */
+.cta-line{text-align:center;margin:32px 0 0}
+.legal-note{text-align:center;margin:44px 0 0}
+.table-scroll{overflow-x:auto}
+.img-crop-left{object-position:20% center}
+.img-crop-right{object-position:70% center}
 
 /* ---------- botões ---------- */
 .btn{
@@ -192,21 +203,7 @@ img.brand-mark{border-radius:50%}
 .side-photo > div{padding:16px 20px 18px}
 .side-photo strong{display:block;font-family:var(--font-head);font-size:1.22rem;color:var(--ink);font-weight:600}
 .side-photo span{font-size:.87rem;color:var(--muted)}
-
-/* ---------- cards de valor ---------- */
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.value-card{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:30px 26px;transition:transform .3s,box-shadow .3s;
-}
-.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
-.value-icon{
-  width:48px;height:48px;border-radius:14px;background:var(--lilac-soft);
-  display:grid;place-items:center;margin-bottom:18px;
-}
-.value-icon svg{width:24px;height:24px;stroke:var(--lilac-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.value-card h3{margin-bottom:.4em}
-.value-card p{font-size:.95rem;color:var(--muted);margin:0}
+.side-photo + .info-stack{margin-top:16px}
 
 /* ---------- serviços (teaser) ---------- */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -242,11 +239,13 @@ img.brand-mark{border-radius:50%}
   border:1px solid var(--line-soft);border-radius:30px;
   padding:64px 48px;text-align:center;
 }
+.cta-band--spaced{margin-top:64px}
 .cta-band h2{max-width:22ch;margin-inline:auto}
 .cta-band p{color:var(--muted);max-width:52ch;margin:0 auto 28px}
 
 /* ---------- FAQ ---------- */
 .faq-wrap{max-width:780px;margin-inline:auto}
+.faq-wrap--narrow{max-width:720px}
 .faq-group{margin-bottom:38px}
 .faq-group > h3{
   font-size:1rem;font-family:var(--font-body);font-weight:500;letter-spacing:.16em;text-transform:uppercase;
@@ -347,6 +346,7 @@ img.brand-mark{border-radius:50%}
 }
 .radio-row input{accent-color:var(--lilac-deep);width:16px;height:16px}
 .form-note{font-size:.8rem;color:var(--faint);margin:4px 0 20px}
+.form-note--tight{margin-bottom:10px}
 .form-error{
   display:none;background:#FBEFEF;border:1px solid #F2D3D3;color:#8C3B3B;border-radius:12px;
   padding:12px 16px;font-size:.88rem;margin-bottom:16px;
@@ -359,6 +359,7 @@ img.brand-mark{border-radius:50%}
 .success-panel[hidden]{display:none}
 .success-panel h3{font-size:1.35rem;margin:0}
 .success-panel p{margin:0;font-size:.92rem;color:#4A4450}
+.success-summary{font-weight:500}
 .success-actions{display:flex;gap:12px;flex-wrap:wrap}
 
 /* ---------- marcação (reserva) ---------- */
@@ -398,16 +399,22 @@ img.brand-mark{border-radius:50%}
 
 /* ---------- área de clientes ---------- */
 .ca-gate{max-width:470px;margin:44px auto 0;text-align:center}
+.ca-gate .form-card{text-align:center}
 .ca-gate .code-field{max-width:300px;margin:22px auto 0;text-align:left}
 .ca-gate .code-field input{
   text-align:center;letter-spacing:.32em;font-size:1.05rem;text-transform:uppercase;
 }
-.ca-gate .hint{font-size:.83rem;color:var(--faint);margin-top:14px}
+.ca-hint{font-size:.82rem;color:var(--muted);margin-top:10px}
 .ca-panel{display:none}
 .ca-panel.show{display:block}
 .ca-head{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
 .ca-head h2{margin:0}
+.ca-head p{margin:4px 0 0}
 .ca-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.ca-col > h3{margin-bottom:18px}
+.ca-col > .tips-card{margin-bottom:18px}
+.ca-col > .tips-card:last-child{margin-bottom:0}
+.ca-note{margin-top:8px}
 .booking-item{
   border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:14px;background:#fff;
 }
@@ -433,7 +440,10 @@ img.brand-mark{border-radius:50%}
 .tips-card h3{font-size:1.3rem}
 .tips-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
 .tips-card li{font-size:.92rem;color:#453F4B;display:flex;gap:10px}
-.tips-card li::before{content:"✦";color:var(--lilac-strong);font-size:.8rem;line-height:1.9}
+.tips-card li::before{
+  content:"";flex:none;width:5px;height:5px;border-radius:50%;
+  background:var(--lilac-strong);margin-top:10px;
+}
 
 /* ---------- footer ---------- */
 .site-footer{background:rgba(251,250,253,.93);border-top:1px solid var(--line-soft);margin-top:40px}
@@ -472,47 +482,6 @@ img.brand-mark{border-radius:50%}
 }
 .whats-float:hover{transform:translateY(-3px) scale(1.03);color:#fff}
 .whats-float svg{width:30px;height:30px;fill:#fff}
-.whats-float::after{
-  content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.35);
-  animation:waPulse 2.4s ease-out infinite;
-}
-@keyframes waPulse{0%{transform:scale(.85);opacity:1}70%,100%{transform:scale(1.25);opacity:0}}
-
-/* ---------- símbolos de Reiki & Tarot dos Anjos a flutuar (js/symbols.js) ---------- */
-main,.site-footer{position:relative;z-index:1}
-.symbol-layer{
-  position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
-}
-.sym{
-  position:absolute;top:0;
-  will-change:transform,opacity;
-  animation:symRise var(--dur,34s) linear forwards;
-}
-.sym-in{
-  display:block;transform-origin:50% 50%;
-  animation:symSway var(--sway-dur,7s) ease-in-out infinite alternate;
-}
-.sym--tw .sym-in{
-  animation:
-    symSway var(--sway-dur,7s) ease-in-out infinite alternate,
-    symTwinkle var(--tw-dur,4s) ease-in-out infinite alternate;
-}
-.sym svg{display:block;width:var(--size,64px);height:var(--size,64px)}
-@keyframes symRise{
-  0%{transform:translate3d(0,110vh,0);opacity:0}
-  7%{opacity:var(--op,.12)}
-  88%{opacity:var(--op,.12)}
-  100%{transform:translate3d(0,-28vh,0);opacity:0}
-}
-@keyframes symSway{
-  from{transform:translateX(calc(var(--amp,18px) * -1)) rotate(var(--r1,0deg))}
-  to{transform:translateX(var(--amp,18px)) rotate(var(--r2,0deg))}
-}
-@keyframes symTwinkle{
-  from{opacity:.6}
-  to{opacity:1}
-}
-.sym-paused .sym,.sym-paused .sym-in{animation-play-state:paused}
 
 /* ---------- reveal on scroll ---------- */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
@@ -520,8 +489,6 @@ main,.site-footer{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
-  .sym,.sym-in{animation:none!important}
-  .sym{opacity:.1;transform:none}
 }
 
 /* ---------- responsivo ---------- */
@@ -530,7 +497,7 @@ main,.site-footer{position:relative;z-index:1}
   .service-block.reverse .svc-img{order:0}
   .hero-media > img{aspect-ratio:16/10}
   .about-media img{aspect-ratio:16/11}
-  .values,.svc-grid,.steps{grid-template-columns:1fr 1fr}
+  .svc-grid,.steps{grid-template-columns:1fr 1fr}
   .gallery{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .booking-side{position:static}
@@ -553,7 +520,7 @@ main,.site-footer{position:relative;z-index:1}
   .form-card{padding:26px 22px}
 }
 @media (max-width:560px){
-  .values,.svc-grid,.steps,.gallery{grid-template-columns:1fr}
+  .svc-grid,.steps,.gallery{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:34px}
   .cta-band{padding:48px 26px}
   h1{font-size:2.3rem}

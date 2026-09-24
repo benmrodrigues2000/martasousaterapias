@@ -43,15 +43,15 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top:20px">
+    <section class="section section--20">
       <div class="container">
 
         <!-- PORTA (código) -->
         <div class="ca-gate" id="caGate">
-          <div class="form-card" style="text-align:center">
+          <div class="form-card">
             <h2>Introduza o código da reserva</h2>
             <p class="muted small">O código da reserva é enviado pela Marta no WhatsApp quando confirma a marcação.</p>
-            <div class="ca-hint" style="margin-top:10px;font-size:.82rem;color:var(--muted)">
+            <div class="ca-hint">
               Se ainda não recebeu o código, verifique a mensagem de confirmação da Marta.
             </div>
             <form>
@@ -70,20 +70,20 @@
           <div class="ca-head">
             <div>
               <h2>Bem-vinda(o) de volta</h2>
-              <p class="small muted" style="margin:4px 0 0">Aqui encontra os seus pedidos e a preparação para a próxima sessão.</p>
+              <p class="small muted">Aqui encontra os seus pedidos e a preparação para a próxima sessão.</p>
             </div>
             <button class="btn btn-ghost btn-sm" id="caLogout" type="button">Terminar sessão</button>
           </div>
 
           <div class="ca-grid">
-            <div>
-              <h3 style="margin-bottom:18px">As suas marcações</h3>
+            <div class="ca-col">
+              <h3>As suas marcações</h3>
               <div id="caBookings"></div>
-              <p class="small muted" style="margin-top:8px">Os pedidos aparecem aqui quando são feitos neste dispositivo.</p>
+              <p class="small muted ca-note">Os pedidos aparecem aqui quando são feitos neste dispositivo.</p>
             </div>
 
-            <div>
-              <div class="tips-card" style="margin-bottom:18px">
+            <div class="ca-col">
+              <div class="tips-card">
                 <h3>Preparar a sua sessão</h3>
                 <ul>
                   <li>Vista roupa confortável, leve e sem apertos</li>
@@ -171,6 +171,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/symbols.js" defer></script>
 </body>
 </html>

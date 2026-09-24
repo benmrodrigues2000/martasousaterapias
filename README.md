@@ -15,7 +15,6 @@ en/                   Versão em inglês das 6 páginas
 css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
-js/symbols.js         Animação de fundo (símbolos de Reiki e Tarot dos Anjos)
 images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
                     principios-reiki.jpg) + ambiente (g2/g4/g5)
 favicon.svg           Ícone
@@ -24,12 +23,6 @@ favicon.svg           Ícone
 
 ## O que já funciona
 
-- **Animação de fundo**: símbolos de Reiki (Cho Ku Rei, Sei He Ki, Hon Sha Ze
-  Sho Nen, Dai Ko Myo, Raku, Enso) e símbolos de Tarot dos Anjos (anjo, coração
-  alado, trombeta, estrela, lua, carta, pomba, sol) flutuam suavemente pelo
-  fundo do site, em todas as páginas. É só decoração (`aria-hidden`), não
-  captura cliques e respeita `prefers-reduced-motion` (desativado para quem
-  prefere menos movimento). Ver `js/symbols.js`.
 - **Marcação online**: o formulário prepara automaticamente uma mensagem de
   WhatsApp com todos os dados (nome, serviço, data, hora…). A Marta só tem de
   enviar a mensagem para validar o pedido, e responde ao cliente para
@@ -50,21 +43,26 @@ favicon.svg           Ícone
 
 Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 
-1. **Código da Área de Clientes** (`clientCode`) — escolha um código só seu (ex.: `MS-2026`) e partilhe-o com as clientes quando confirmam a marcação.
+1. **Código da Área de Clientes** (`clientCode`) — o código atual é `MS2026`.
+   É lido de `js/config.js` em sítos únicos: a validação na Área de Clientes e
+   o texto da página de marcação. Partilhe-o com as clientes quando confirma
+   a marcação; cada pedido recebe também o seu próprio código (ex.: `MS4821`).
 2. **Redes sociais** (`instagram`, `facebook`) — substitua pelos perfis reais (também nas páginas, onde aparecem diretamente nos links).
 3. **Endereço / mapa** — quando quiser mostrar a localização exata, edite:
    - `address` e `mapQuery` em `js/config.js`
    - o `src` do `<iframe>` em `contacto.html` (e `en/contact.html`), ex.:
      `https://www.google.com/maps?q=Rua+Exemplo,+123,+Vila+Nova+de+Gaia&output=embed`
 4. **Preços** — os valores (50€/35€/35€/70€) são indicativos. Ajuste em
-   `servicos.html` e `en/services.html` (textos dos serviços + tabela de preços),
-   e também nos `<option>` de `marcacao.html` / `en/booking.html`.
+   `js/config.js` (campo `price` de cada serviço — alimenta o dropdown do
+   formulário de marcação) e em `servicos.html` / `en/services.html` (textos
+   dos serviços + tabela de preços).
 5. **Logótipo** — o cabeçalho e o rodapé usam o emblema oficial em
    `images/logo.svg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
    em `css/style.css`). Para trocar pelo ficheiro original, basta substituir
    `images/logo.svg` mantendo o nome.
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
-   por defeito; confirme se corresponde à sua disponibilidade.
+   por defeito; confirme se corresponde à sua disponibilidade. As horas do
+   dropdown vêm de `timeSlots` em `js/config.js`.
 
 ## Como publicar (gratuito) — GitHub Pages
 
@@ -89,6 +87,9 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 
 > Nota: o domínio `.pt` pode ser registado em registos.pt; os domínios
 > `.com`/`.pt` podem ser obtidos em registadores como IONOS, OVH ou 19A.
+>
+> Se passar para um domínio próprio, atualize também `og:url` e `og:image`
+> em `index.html` e `en/index.html` (hoje apontam para o GitHub Pages).
 
 ## Como funciona a marcação (resumo)
 
@@ -106,8 +107,6 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 ## Testes rápidos
 
 - Abrir `index.html` no navegador: navegação, botões, galeria, FAQ.
-- Animação de fundo: símbolos de Reiki e de Tarot dos Anjos devem flutuar
-  lentamente pelo fundo (bem ténues, sem interferir com o texto).
 - Marcar sessão: preencher e submeter → deve abrir o WhatsApp com a mensagem.
-- Área de Clientes: código `MARTA2026` (ou o que definir em `config.js`).
+- Área de Clientes: código `MS2026` (ou o que definir em `config.js`).
 - Alternância PT ⇄ EN nos cabeçalhos.

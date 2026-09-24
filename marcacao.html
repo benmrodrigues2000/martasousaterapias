@@ -42,7 +42,7 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top:30px">
+    <section class="section section--30">
       <div class="container">
         <div class="booking-layout">
 
@@ -67,11 +67,7 @@
               <div class="field">
                 <label for="bkService">Serviço *</label>
                 <select id="bkService" name="service" required>
-                  <option value="" data-pt="" data-en="">Escolha o serviço…</option>
-                  <option value="Sessão individual de Reiki" data-pt="Sessão individual de Reiki" data-en="Individual Reiki session">Reiki — sessão individual · 60 min · 50&nbsp;€</option>
-                  <option value="Reiki à distância" data-pt="Reiki à distância" data-en="Distance Reiki">Reiki à distância · 45 min · 35&nbsp;€</option>
-                  <option value="Tarot dos Anjos" data-pt="Tarot dos Anjos" data-en="Angel Tarot reading">Tarot dos Anjos · 50 min · 35&nbsp;€</option>
-                  <option value="Reiki + Tarot dos Anjos" data-pt="Reiki + Tarot dos Anjos" data-en="Reiki + Angel Tarot">Reiki + Tarot dos Anjos · 90 min · 70&nbsp;€</option>
+                  <option value="" selected>Escolha o serviço…</option>
                 </select>
               </div>
               <div class="form-row">
@@ -106,7 +102,7 @@
               <div class="success-panel" id="bookingSuccess" hidden>
                 <h3 id="bkSuccessTitle"></h3>
                 <p id="bkSuccessText"></p>
-                <p id="bkSuccessSummary" class="small" style="font-weight:500"></p>
+                <p id="bkSuccessSummary" class="small success-summary"></p>
                 <div class="success-actions">
                   <a class="btn btn-primary btn-sm" id="bkSuccessWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
                   <a class="btn btn-ghost btn-sm" id="bkSuccessMail" href="#">Enviar por email</a>
@@ -144,7 +140,7 @@
             </div>
             <div class="side-card reveal">
               <h3>Após o pedido</h3>
-              <p>Guarda o pedido na sua <a href="area-clientes.html">Área de Clientes</a> deste dispositivo (código <strong>MS2026</strong>), onde pode consultar e reenviar quando quiser.</p>
+              <p>Guarda o pedido na sua <a href="area-clientes.html">Área de Clientes</a> deste dispositivo (código <strong data-client-code>MS2026</strong>), onde pode consultar e reenviar quando quiser.</p>
             </div>
           </aside>
 
@@ -215,6 +211,5 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/symbols.js" defer></script>
 </body>
 </html>
