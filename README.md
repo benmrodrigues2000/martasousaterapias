@@ -2,6 +2,10 @@
 
 Site estático (HTML + CSS + JS, sem dependências) criado a partir do briefing de 24/09/2026.
 
+O conteúdo (textos, serviços, contactos, imagens) é o mesmo do site anterior —
+o que mudou foi a **direção de arte**: composição, tipografia, cor e ordem das
+secções (ver *Direção de arte* abaixo).
+
 ## Estrutura
 
 ```
@@ -12,13 +16,15 @@ contacto.html         Contacto + mapa + formulário
 marcacao.html         Marcação / reserva online
 area-clientes.html    Área de clientes (com código de acesso)
 en/                   Versão em inglês das 6 páginas
-css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
+css/style.css         Estilos — sistema de design completo (ver abaixo)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
 images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
                     principios-reiki.jpg) + ambiente (g2/g4/g5). As
                     variantes responsivas (ex.: marta-sobre-480.jpg) são
                     geradas por tools/make-responsive-images.sh
+                    (marta-espaco*.jpg — o cartaz dos cinco princípios — fica
+                    disponível no repositório, embora não seja usado hoje)
 tools/                Scripts auxiliares (imagens responsivas + srcset)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
@@ -43,15 +49,41 @@ favicon.svg           Ícone
   pequena (geradas por `tools/make-responsive-images.sh`) e é servida em
   `srcset`/`sizes` com `width`/`height` declarados — o telemóvel descarrega
   ficheiros muito mais leves e não há saltos de layout durante o carregamento.
+- **Página de serviços em índice**: cada serviço tem numeral, fotografia
+  alternada (esquerda/direita) e lista de inclusões; a tabela de durações vive
+  num cartão próprio.
+- **FAQ com índice de atalhos**: três grupos com ligações rápidas no topo.
 - SEO básico: meta tags, Open Graph e dados estruturados (LocalBusiness) na página inicial.
 - Nota legal no rodapé: "As terapias holísticas têm caráter complementar e não substituem o acompanhamento médico."
+
+## Direção de arte (perceção / gestalt)
+
+O site foi reorganizado a partir de princípios de perceção visual, para que a
+hierarquia se leia antes de qualquer leitura:
+
+| Princípio | Como aparece no site |
+|---|---|
+| **Hierarquia** | Serifa de display (Fraunces) para títulos, sans geométrica (Jost) para texto. O `<h1>` do hero é o maior objeto da página e cada secção tem um único título. |
+| **Proximidade** | Etiquetas pequenas (eyebrow) coladas ao título que descrevem, e blocos de texto com medida de 55–66 caracteres. |
+| **Semelhança / repetição** | A mesma etiqueta (`.eyebrow`), a mesma grelha de 1180 px, o mesmo raio de canto e as mesmas fotografias em arco. |
+| **Contraste de superfícies** | Papel quente (#FCFAF6) alterna com areia (#F4EEE4); faixas de chamada em ameixa (#241B2E). |
+| **Direção/continuidade** | Painéis alternados (imagem–texto–imagem) em Serviços e Início; numerais 01–05 conduzem os cinco princípios. |
+| **Figura–fundo** | Fotografias em moldura com sombra suave sobre papel; cartões brancos apenas onde há interação (formulários, tabela, área de clientes). |
+| **Destino comum** | Todas as páginas terminam num botão de marcação; o cabeçalho e o rodapé repetem a mesma assinatura. |
+
+Paleta: papel `#FCFAF6` · areia `#F4EEE4` · lilás `#A78BFA` · lilás profundo
+`#5A3EAF` (ações) · terroso `#7A5C33` (etiquetas) · ameixa `#241B2E` (faixas).
+
+Tipografia: **Fraunces** (títulos, numeral, itálicos) e **Jost** (texto, botões,
+etiquetas), carregadas do Google Fonts; se não houver rede, o CSS recorre a
+Georgia/serif e à fonte do sistema, mantendo a composição.
 
 ## O que personalizar ANTES de publicar
 
 Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 
 1. **Código da Área de Clientes** (`clientCode`) — o código atual é `MS2026`.
-   É lido de `js/config.js` em sítos únicos: a validação na Área de Clientes e
+   É lido de `js/config.js` em sítios únicos: a validação na Área de Clientes e
    o texto da página de marcação. Partilhe-o com as clientes quando confirma
    a marcação; cada pedido recebe também o seu próprio código (ex.: `MS4821`).
 2. **Redes sociais** (`instagram`, `facebook`) — substitua pelos perfis reais (também nas páginas, onde aparecem diretamente nos links).
@@ -69,9 +101,11 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
    `.price-row`, `.price-tag`, `.price-note` e `.price-table` continuam
    disponíveis em `css/style.css`.
 5. **Logótipo** — o cabeçalho e o rodapé usam o emblema oficial em
-   `images/logo.jpeg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
+   `images/logo.jpeg` (48 px no cabeçalho · 72 px no rodapé; ver `.brand-mark`
    em `css/style.css`). Para trocar pelo ficheiro original, basta substituir
-   `images/logo.jpeg` mantendo o nome.
+   `images/logo.jpeg` mantendo o nome e rodar
+   `python3 tools/add-srcset.py` (o `srcset` das duas versões do logótipo é
+   gerado a partir de `images/logo-56/112/168.jpg`).
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade. As horas do
    dropdown vêm de `timeSlots` em `js/config.js`.
@@ -121,4 +155,25 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 - Abrir `index.html` no navegador: navegação, botões, FAQ.
 - Marcar sessão: preencher e submeter → deve abrir o WhatsApp com a mensagem.
 - Área de Clientes: código `MS2026` (ou o que definir em `config.js`).
-- Alternância PT ⇄ EN nos cabeçalhos.
+- Alternância PT ⇄ EN nos cabeçalhos (no telemóvel aparece dentro do menu).
+- No telemóvel: o menu abre sob o cabeçalho e o botão de marcação continua
+  visível; até 1120 px o atalho da Área de Clientes sai do menu de topo e
+  passa para o rodapé.
+- Rolar a página: o cabeçalho ganha fundo sólido e uma linha inferior.
+- Página de serviços: as quatro fotografias alternam de lado; a tabela de
+  durações rola na horizontal em ecrãs pequenos.
+
+### Manutenção das imagens
+
+Depois de acrescentar ou trocar fotografias:
+
+```bash
+bash tools/make-responsive-images.sh   # gera as variantes mais leves
+python3 tools/add-srcset.py            # escreve srcset/sizes/width/height
+python3 tools/add-srcset.py --check    # confirma que nada falta
+```
+
+O segundo script conhece os contextos da nova grelha (logótipo do cabeçalho
+48 px, logótipo do rodapé 72 px, hero 520 px, meia largura 554 px, cartão
+369 px, faixa de ambiente 640 px, fotografia lateral 430/520 px) — se mudar a
+grelha em `css/style.css`, atualize também `SIZES` em `tools/add-srcset.py`.

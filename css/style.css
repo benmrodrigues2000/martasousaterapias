@@ -206,6 +206,7 @@ html.is-scrolled .site-header{
     linear-gradient(180deg,#FBF7F1 0%, rgba(252,250,246,0) 78%);
 }
 .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-copy{max-width:620px}
 .hero h1{margin-bottom:.42em}
 .hero .lead{margin-bottom:34px}
 .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-bottom:clamp(32px,4vw,46px)}
@@ -397,6 +398,7 @@ html.is-scrolled .site-header{
     linear-gradient(currentColor,currentColor) center/1.5px 13px no-repeat;
   transition:transform .35s ease;
 }
+.faq-list summary:hover{color:var(--lilac-deep)}
 .faq-list details[open] summary{color:var(--lilac-deep)}
 .faq-list details[open] summary::after{transform:rotate(45deg)}
 .faq-list .faq-a{padding:0 clamp(24px,4vw,54px) 26px 0;color:var(--muted);font-size:.97rem;max-width:66ch}
@@ -405,9 +407,9 @@ html.is-scrolled .site-header{
   padding:clamp(26px,3.4vw,44px) 0;border-top:1px solid var(--line);
 }
 .faq-group:first-child{padding-top:0;border-top:0}
-.faq-group > h3{
+.faq-group > h2{
   font-family:var(--font-body);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--earth);font-weight:400;margin:8px 0 0;
+  color:var(--earth);font-weight:400;margin:8px 0 0;line-height:1.5;
 }
 
 /* ---------- serviços detalhados ---------- */
@@ -421,7 +423,9 @@ html.is-scrolled .site-header{
   border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
   aspect-ratio:3/2;background:var(--sand);
 }
+.service-block .svc-img--wide{aspect-ratio:3/2}
 .service-block .svc-img--tall{aspect-ratio:4/5}
+.service-block .svc-img--tall img{object-position:center 46%}
 .service-block .svc-img img{width:100%;height:100%;object-fit:cover}
 .service-block.reverse .svc-img{order:2}
 .service-index{display:block;font-family:var(--font-display);font-size:.9rem;letter-spacing:.22em;color:var(--earth);margin-bottom:14px}
@@ -480,9 +484,9 @@ html.is-scrolled .site-header{
   border:1px solid var(--line);display:grid;place-items:center;
 }
 .info-icon svg{width:19px;height:19px;stroke:var(--lilac-deep);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.info-card h3{
+.info-card h2{
   font-family:var(--font-body);font-size:.72rem;font-weight:400;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--earth);margin:4px 0 8px;
+  text-transform:uppercase;color:var(--earth);margin:4px 0 8px;line-height:1.4;
 }
 .info-card p{font-size:.95rem;color:var(--muted);margin:0}
 .info-card a.inline{color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px;font-weight:400}
@@ -687,6 +691,14 @@ html.is-scrolled .site-header{
 .reveal{opacity:1;transform:none}
 html.reveal-ready .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.65,.25,1)}
 html.reveal-ready .reveal.in{opacity:1;transform:none}
+/* pequeno escalonamento nos conjuntos de cartões e listas */
+html.reveal-ready .svc-grid > .reveal:nth-child(2),
+html.reveal-ready .steps > .reveal:nth-child(2),
+html.reveal-ready .faq-list > .reveal:nth-child(2){transition-delay:.09s}
+html.reveal-ready .svc-grid > .reveal:nth-child(3),
+html.reveal-ready .steps > .reveal:nth-child(3),
+html.reveal-ready .faq-list > .reveal:nth-child(3){transition-delay:.18s}
+html.reveal-ready .faq-list > .reveal:nth-child(4){transition-delay:.27s}
 @media (prefers-reduced-motion:reduce){
   html.reveal-ready .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
@@ -704,6 +716,8 @@ html.reveal-ready .reveal.in{opacity:1;transform:none}
   .header-inner{gap:16px}
 }
 @media (max-width:980px){
+  .service-block .svc-img--wide{aspect-ratio:3/2}
+.service-block .svc-img--tall{aspect-ratio:4/5}
   .hero-grid,.about-grid,.principios-grid,.service-block,.contact-grid,.booking-layout,.ca-grid,.faq-group{grid-template-columns:1fr;gap:clamp(28px,5vw,44px)}
   .service-block.reverse .svc-img{order:0}
   .service-block{padding:clamp(30px,5vw,44px) 0}
@@ -744,7 +758,7 @@ html.reveal-ready .reveal.in{opacity:1;transform:none}
   }
   .main-nav a::after{display:none}
   .main-nav a.active{color:var(--lilac-deep)}
-  .main-nav a.nav-soft{font-size:.92rem}
+  .main-nav a.nav-soft{display:block;font-size:.92rem}
   .main-nav .lang-mobile{display:block;padding-bottom:4px;border-bottom:0;color:var(--earth);letter-spacing:.2em;text-transform:uppercase;font-size:.8rem}
   .lang{display:none}
   .nav-toggle{display:flex}
