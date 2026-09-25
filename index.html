@@ -14,7 +14,7 @@
   <meta property="og:locale" content="pt_PT">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -35,14 +35,15 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Marta Sousa Terapias — Página inicial">
-        <img class="brand-mark" src="images/logo.jpeg" srcset="images/logo-56.jpg 56w, images/logo-112.jpg 112w, images/logo-168.jpg 168w" sizes="56px" alt="Marta Sousa Terapias" width="56" height="56" decoding="async">
+        <img class="brand-mark" src="images/logo.jpeg" srcset="images/logo-56.jpg 56w, images/logo-112.jpg 112w, images/logo-168.jpg 168w" sizes="48px" alt="Marta Sousa Terapias" width="56" height="56" decoding="async">
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
-        <a href="index.html" class="active">Início</a>
+        <a href="index.html">Início</a>
         <a href="servicos.html">Serviços</a>
         <a href="faq.html">Perguntas Frequentes</a>
         <a href="contacto.html">Contacto</a>
         <a href="area-clientes.html" class="nav-soft">Área de Clientes</a>
+        <a class="lang-mobile" href="en/index.html" title="View English version">EN</a>
       </nav>
       <div class="header-actions">
         <a class="lang" href="en/index.html" title="View English version">EN</a>
@@ -62,7 +63,7 @@
           <p class="lead">Sou a Marta, terapeuta holística em Vila Nova de Gaia. Recebo-a(o) no meu espaço — ou à distância — para sessões de Reiki e leituras de Tarot dos Anjos, sempre adaptadas a si e ao momento que está a viver.</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="marcacao.html">Marcar a minha sessão</a>
-            <a class="btn btn-ghost" href="servicos.html">Conhecer os serviços</a>
+            <a class="more-link" href="servicos.html">Conhecer os serviços</a>
           </div>
           <ul class="hero-meta">
             <li>Presencial e online</li>
@@ -78,15 +79,19 @@
           </div>
         </div>
       </div>
+      <div class="kw-strip">
+        <div class="container kw-inner"><span>Reiki</span><i aria-hidden="true">✦</i><span>Tarot dos Anjos</span><i aria-hidden="true">✦</i><span>Sessões presenciais e à distância</span><i aria-hidden="true">✦</i><span>Vila Nova de Gaia</span></div>
+      </div>
     </section>
 
     <!-- ======= SOBRE ======= -->
-    <section class="section">
+    <section class="section section--sand">
       <div class="container about-grid">
         <div class="about-media reveal">
-          <img src="images/marta-sobre.jpg" srcset="images/marta-sobre-480.jpg 480w, images/marta-sobre-640.jpg 640w, images/marta-sobre.jpg 783w" sizes="(max-width: 980px) calc(100vw - 48px), 487px" alt="A Marta no seu espaço de terapias, de mãos em oração junto à marquesa" width="783" height="900" loading="lazy" decoding="async">
+          <img src="images/marta-sobre.jpg" srcset="images/marta-sobre-480.jpg 480w, images/marta-sobre-640.jpg 640w, images/marta-sobre.jpg 783w" sizes="(max-width: 980px) calc(100vw - 48px), 500px" alt="A Marta no seu espaço de terapias, de mãos em oração junto à marquesa" width="783" height="900" loading="lazy" decoding="async">
         </div>
-        <div class="principios-copy reveal">
+        <div class="about-copy reveal">
+          
           <h2>Olá, sou a Marta — este espaço é para si</h2>
           <p>Recebo-a(o) no meu espaço em Vila Nova de Gaia, preparado com carinho para cada sessão — da marquesa ao altar, cada detalhe existe para que desligue do mundo lá fora e se reencontre consigo.</p>
           <p>Trabalho com <strong>Reiki</strong>, <strong>terapias holísticas</strong> e <strong>Tarot dos Anjos</strong>, como ferramenta de reflexão e orientação pessoal — sessões acolhedoras e respeitosas, presenciais e online, sempre com serenidade, respeito e confidencialidade.</p>
@@ -99,18 +104,22 @@
       </div>
     </section>
 
-    <!-- ======= SERVIÇOS TEASER ======= -->
-    <section class="section section--20">
+    <!-- ======= SERVIÇOS ======= -->
+    <section class="section">
       <div class="container">
-        <div class="section-head center reveal">
-          <p class="eyebrow">Serviços</p>
-          <h2>Uma sessão à medida do seu momento</h2>
-          <p>Terapias suaves e reflexivas, pensadas para o seu equilíbrio no dia a dia.</p>
+        <div class="svc-head">
+          <div class="section-head reveal">
+            <p class="eyebrow">Serviços</p>
+            <h2>Uma sessão à medida do seu momento</h2>
+            <p>Terapias suaves e reflexivas, pensadas para o seu equilíbrio no dia a dia.</p>
+          </div>
+          <a class="more-link reveal" href="servicos.html">Ver todos os serviços</a>
         </div>
         <div class="svc-grid">
           <article class="svc-card reveal">
-            <div class="svc-img"><img src="images/marta-reiki.jpg" srcset="images/marta-reiki-400.jpg 400w, images/marta-reiki-600.jpg 600w, images/marta-reiki-800.jpg 800w, images/marta-reiki.jpg 1200w" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 72px) / 2), 357px" alt="A Marta a aplicar Reiki a uma cliente deitada na marquesa do seu espaço" width="1200" height="676" loading="lazy" decoding="async"></div>
+            <div class="svc-img"><img src="images/marta-reiki-retrato.jpg" srcset="images/marta-reiki-retrato-400.jpg 400w, images/marta-reiki-retrato.jpg 691w" sizes="(max-width: 640px) calc(100vw - 36px), (max-width: 980px) calc((100vw - 76px) / 2), 369px" alt="A Marta a aplicar Reiki a uma cliente deitada na marquesa do seu espaço" width="691" height="864" loading="lazy" decoding="async"></div>
             <div class="svc-body">
+              <span class="svc-index">01</span>
               <div class="svc-meta">60 minutos <span class="dot"></span> Presencial</div>
               <h3>Reiki</h3>
               <p>Técnica suave de harmonização energética que promove relaxamento profundo, alívio de tensões e reequilíbrio.</p>
@@ -118,8 +127,9 @@
             </div>
           </article>
           <article class="svc-card reveal">
-            <div class="svc-img"><img src="images/g2.jpg" srcset="images/g2-400.jpg 400w, images/g2-720.jpg 720w, images/g2.jpg 768w" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 72px) / 2), 357px" alt="Cartas de tarot viradas sobre tecido linho" width="768" height="1376" loading="lazy" decoding="async"></div>
+            <div class="svc-img"><img src="images/g2.jpg" srcset="images/g2-400.jpg 400w, images/g2-720.jpg 720w, images/g2.jpg 768w" sizes="(max-width: 640px) calc(100vw - 36px), (max-width: 980px) calc((100vw - 76px) / 2), 369px" alt="Cartas de tarot viradas sobre tecido linho" width="768" height="1376" loading="lazy" decoding="async"></div>
             <div class="svc-body">
+              <span class="svc-index">02</span>
               <div class="svc-meta">50 minutos <span class="dot"></span> Presencial / à distância</div>
               <h3>Tarot dos Anjos</h3>
               <p>Uma leitura de reflexão e orientação pessoal, com base nas mensagens dos Anjos, para clarificar caminhos e momentos.</p>
@@ -127,8 +137,9 @@
             </div>
           </article>
           <article class="svc-card reveal">
-            <div class="svc-img"><img src="images/marta-altar.jpg" srcset="images/marta-altar-400.jpg 400w, images/marta-altar-600.jpg 600w, images/marta-altar-800.jpg 800w, images/marta-altar.jpg 1200w" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 72px) / 2), 357px" alt="A Marta em oração junto ao altar do seu espaço" width="1200" height="798" loading="lazy" decoding="async"></div>
+            <div class="svc-img"><img src="images/marta-altar.jpg" srcset="images/marta-altar-400.jpg 400w, images/marta-altar-600.jpg 600w, images/marta-altar-800.jpg 800w, images/marta-altar.jpg 1200w" sizes="(max-width: 640px) calc(100vw - 36px), (max-width: 980px) calc((100vw - 76px) / 2), 369px" alt="A Marta em oração junto ao altar do seu espaço" width="1200" height="798" loading="lazy" decoding="async"></div>
             <div class="svc-body">
+              <span class="svc-index">03</span>
               <div class="svc-meta">45 minutos <span class="dot"></span> À distância</div>
               <h3>Reiki à distância</h3>
               <p>Para quem não pode estar presente ou prefere a comodidade do seu próprio espaço — a mesma intenção, à sua distância.</p>
@@ -136,15 +147,14 @@
             </div>
           </article>
         </div>
-        <p class="reveal cta-line"><a class="btn btn-ghost" href="servicos.html">Ver todos os serviços</a></p>
       </div>
     </section>
 
     <!-- ======= PRINCÍPIOS DO REIKI ======= -->
-    <section class="section section--30 principios" id="principios">
+    <section class="section section--sand principios" id="principios">
       <div class="container principios-grid">
         <div class="principios-media reveal">
-          <img src="images/principios-reiki.jpg" srcset="images/principios-reiki-600.jpg 600w, images/principios-reiki-900.jpg 900w, images/principios-reiki.jpg 1200w" sizes="(max-width: 980px) calc(100vw - 48px), 532px" alt="Mikao Usui e os cinco princípios do Reiki para a felicidade" width="1200" height="900" loading="lazy" decoding="async">
+          <img src="images/principios-reiki.jpg" srcset="images/principios-reiki-600.jpg 600w, images/principios-reiki-900.jpg 900w, images/principios-reiki.jpg 1200w" sizes="(max-width: 980px) calc(100vw - 48px), 554px" alt="Mikao Usui e os cinco princípios do Reiki para a felicidade" width="1200" height="900" loading="lazy" decoding="async">
         </div>
         <div class="principios-copy reveal">
           <p class="eyebrow">Filosofia</p>
@@ -162,10 +172,19 @@
       </div>
     </section>
 
+    <!-- ======= AMBIENTE ======= -->
+    <section class="section photo-band">
+      <div class="container band-grid">
+        <figure class="band-a reveal"><img src="images/g4.jpg" srcset="images/g4-400.jpg 400w, images/g4-720.jpg 720w, images/g4.jpg 768w" sizes="(max-width: 980px) calc(100vw - 48px), 640px" alt="Óleos essenciais, uma vela e seixos sobre mármore" width="768" height="1376" loading="lazy" decoding="async"></figure>
+        <figure class="band-b reveal"><img src="images/g5.jpg" srcset="images/g5-400.jpg 400w, images/g5-720.jpg 720w, images/g5.jpg 768w" sizes="(max-width: 980px) calc(100vw - 48px), 640px" alt="Toalhas dobradas, alfazema e eucalipto junto à janela" width="768" height="1376" loading="lazy" decoding="async"></figure>
+        <p class="band-note reveal">Presencial em Vila Nova de Gaia · À distância, onde estiver</p>
+      </div>
+    </section>
+
     <!-- ======= COMO FUNCIONA ======= -->
-    <section class="section section--30">
+    <section class="section section--sand">
       <div class="container">
-        <div class="section-head center reveal">
+        <div class="section-head reveal">
           <p class="eyebrow">Como funciona</p>
           <h2>Simples, em três passos</h2>
         </div>
@@ -189,8 +208,8 @@
       </div>
     </section>
 
-    <!-- ======= FAQ TEASER ======= -->
-    <section class="section section--30">
+    <!-- ======= FAQ ======= -->
+    <section class="section">
       <div class="container">
         <div class="section-head center reveal">
           <p class="eyebrow">Dúvidas frequentes</p>
@@ -235,12 +254,23 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="index.html" aria-label="Marta Sousa Terapias">
-            <img class="brand-mark" src="images/logo.jpeg" srcset="images/logo-56.jpg 56w, images/logo-112.jpg 112w, images/logo-168.jpg 168w" sizes="56px" alt="Marta Sousa Terapias" width="56" height="56" decoding="async">
+            <img class="brand-mark" src="images/logo.jpeg" srcset="images/logo-56.jpg 56w, images/logo-112.jpg 112w, images/logo-168.jpg 168w" sizes="72px" alt="Marta Sousa Terapias" width="56" height="56" decoding="async">
           </a>
           <p class="f-tag">Reiki, terapias holísticas e Tarot dos Anjos — um espaço de calma, equilíbrio e bem-estar em Vila Nova de Gaia.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/martasousaterapias" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/martasousaterapias" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.6H7.5v3.2h2.8V21h3.1z"/></svg>
+            </a>
+            <a data-wa-default href="https://wa.me/351917005532" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
         </div>
         <div>
-          <h4 class="f-h">Navegação</h4>
+          <h2 class="f-h">Navegação</h2>
           <ul class="f-links">
             <li><a href="index.html">Início</a></li>
             <li><a href="servicos.html">Serviços</a></li>
@@ -251,7 +281,7 @@
           </ul>
         </div>
         <div>
-          <h4 class="f-h">Contacto</h4>
+          <h2 class="f-h">Contacto</h2>
           <ul class="f-contact">
             <li>
               <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
@@ -266,17 +296,6 @@
               <span>Vila Nova de Gaia, Portugal</span>
             </li>
           </ul>
-          <div class="footer-social">
-            <a href="https://www.instagram.com/martasousaterapias" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <a href="https://www.facebook.com/martasousaterapias" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.6H7.5v3.2h2.8V21h3.1z"/></svg>
-            </a>
-            <a data-wa-default href="https://wa.me/351917005532" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -286,8 +305,8 @@
     </div>
   </footer>
 
-  <a class="whats-float" data-wa-default href="https://wa.me/351917005532" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a class="whats-float" data-wa-default href="https://wa.me/351917005532" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <script src="js/config.js"></script>
