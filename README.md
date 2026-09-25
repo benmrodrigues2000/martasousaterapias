@@ -57,9 +57,9 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
    formulário de marcação) e em `servicos.html` / `en/services.html` (textos
    dos serviços + tabela de preços).
 5. **Logótipo** — o cabeçalho e o rodapé usam o emblema oficial em
-   `images/logo.svg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
+   `images/logo.jpeg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
    em `css/style.css`). Para trocar pelo ficheiro original, basta substituir
-   `images/logo.svg` mantendo o nome.
+   `images/logo.jpeg` mantendo o nome.
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade. As horas do
    dropdown vêm de `timeSlots` em `js/config.js`.
