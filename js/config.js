@@ -2,7 +2,8 @@
    Marta Sousa Terapias — config.js
    >>> PERSONALIZE ESTE FICHEIRO ANTES DE PUBLICAR <<<
    É a única fonte de valores: telefone, email, redes sociais,
-   código da Área de Clientes, serviços, preços e horários.
+   código da Área de Clientes, serviços, preços (desativados,
+   showPrices: false) e horários.
    ============================================================ */
 
 const SITE = {
@@ -26,9 +27,15 @@ const SITE = {
      ao confirmar a marcação (também exibido na página de marcação). */
   clientCode: "MS2026",
 
+  /* Preços — desativados por agora: os valores não aparecem em lado
+     nenhum do site. Ficam guardados aqui nos serviços abaixo; para
+     voltar a mostrá-los, ponha showPrices: true e reintroduza os
+     blocos de preço nas páginas de serviços (ver README). */
+  showPrices: false,
+
   /* Serviços do formulário de marcação — o nome (pt/en) é o que
-     aparece na mensagem de WhatsApp; minutos e preço aparecem no
-     dropdown "Serviço". */
+     aparece na mensagem de WhatsApp; os minutos aparecem no dropdown
+     "Serviço" (o preço só aparece se showPrices for true). */
   services: [
     { pt: "Sessão individual de Reiki", en: "Individual Reiki session", minutes: 60, price: 50 },
     { pt: "Reiki à distância",          en: "Distance Reiki",           minutes: 45, price: 35 },

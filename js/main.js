@@ -15,6 +15,7 @@
       phoneIntl: "351917005532",
       email: "martacla@gmail.com",
       clientCode: "MS2026",
+      showPrices: false,
       services: [
         { pt: "Sessão individual de Reiki", en: "Individual Reiki session", minutes: 60, price: 50 },
         { pt: "Reiki à distância",          en: "Distance Reiki",           minutes: 45, price: 35 },
@@ -376,8 +377,13 @@
       var phHTML = ph ? ph.outerHTML : "";
       serviceSelect.innerHTML = phHTML + cfg.services.map(function (s) {
         var name = isEN ? s.en : s.pt;
-        var price = isEN ? "€" + s.price : s.price + " €";
-        return '<option value="' + esc(name) + '">' + esc(name + " · " + s.minutes + " min · " + price) + "</option>";
+        var label = name + " · " + s.minutes + " min";
+        /* Preço só entra no rótulo se os preços estiverem ativos
+           (SITE.showPrices em js/config.js). */
+        if (cfg.showPrices && s.price != null) {
+          label += " · " + (isEN ? "€" + s.price : s.price + " €");
+        }
+        return '<option value="' + esc(name) + '">' + esc(label) + "</option>";
       }).join("");
     }
 
