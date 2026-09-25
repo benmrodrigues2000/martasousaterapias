@@ -17,14 +17,15 @@ marcacao.html         Marcação / reserva online
 area-clientes.html    Área de clientes (com código de acesso)
 en/                   Versão em inglês das 6 páginas
 css/style.css         Estilos — sistema de design completo (ver abaixo)
-js/config.js          >>> PERSONALIZE AQUI <<<
+js/config.js          >>> PERSONALIZE AQUI <<< (inclui formEndpoint = base de dados)
 js/main.js            Lógica (menu, marcação, área de clientes)
 images/               Fotografias reais da Marta e do espaço + ambiente
                     (g2/g4/g5). As variantes responsivas (ex.: marta-sobre-480.jpg)
                     são geradas por tools/make-responsive-images.sh.
                     marta-espaco*.jpg (o cartaz dos cinco princípios) fica
                     disponível no repositório, embora não seja usado hoje.
-tools/                Scripts auxiliares (imagens responsivas + srcset)
+tools/                Scripts auxiliares (imagens responsivas + srcset) e
+                    google-sheets-apps-script.gs (base de dados dos formulários)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
 ```
@@ -127,6 +128,62 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
    e, se necessário, o `object-position` de `.about-media img` e
    `.principios-media img` em `css/style.css` para escolher a parte visível.
 
+## Base de dados dos formulários
+
+Os pedidos de marcação e as mensagens de contacto podem ficar guardados num
+único sítio (em vez de só no telemóvel da cliente). Basta preencher
+**`formEndpoint`** em `js/config.js`. Enquanto estiver vazio, o site funciona
+exatamente como antes.
+
+Com a base de dados ligada:
+- **Marcação**: o pedido é guardado na base de dados *e* o WhatsApp continua
+  a abrir como antes (o envio acontece em segundo plano).
+- **Contacto**: a mensagem é enviada diretamente e aparece "Mensagem enviada",
+  sem abrir o programa de email. Se o envio falhar, o site abre o email com a
+  mensagem pronta, como antes.
+- Os dois formulários têm um campo "armadilha" invisível contra spam.
+
+### Opção A — Google Sheets (recomendada · grátis · sem limite prático)
+
+Cada envio vira uma linha numa folha de cálculo (separadores **Marcações** e
+**Contactos**, com a coluna *Estado* para a Marta ir atualizando), e a Marta
+recebe um email de aviso.
+
+1. Com a conta Google da Marta, crie uma folha nova em https://sheets.new
+   (ex.: "Site — Marcações").
+2. Menu **Extensões → Apps Script**. Apague o código de exemplo e cole todo o
+   conteúdo de `tools/google-sheets-apps-script.gs`. Confirme o email em
+   `NOTIFY_EMAIL` e guarde (💾).
+3. **Implementar → Nova implementação** → ícone ⚙ → **Aplicação Web**:
+   - *Executar como*: **Eu**
+   - *Quem tem acesso*: **Qualquer pessoa**
+   → **Implementar** → autorize com a conta Google (em "A Google não validou
+   esta app" escolha *Avançadas → Aceder*, é o seu próprio script).
+4. Copie o **URL da aplicação Web** (termina em `/exec`) e cole-o em
+   `js/config.js`:
+   ```js
+   formEndpoint: "https://script.google.com/macros/s/XXXXXXXX/exec",
+   ```
+5. Publique o site e faça uma marcação de teste: deve aparecer uma linha no
+   separador **Marcações** e chegar um email.
+
+> Se alterar o script mais tarde: **Implementar → Gerir implementações →
+> ✏️ → Versão: Nova versão**. Assim o URL mantém-se igual.
+
+### Opção B — Formspree (mais simples · grátis até 50 envios/mês)
+
+1. Crie uma conta em https://formspree.io e um formulário novo.
+2. Copie o endpoint (`https://formspree.io/f/xxxxxxx`) para `formEndpoint`
+   em `js/config.js`.
+3. Os envios ficam no painel do Formspree e chegam por email. Se o domínio do
+   site mudar, confirme o domínio nas definições do formulário.
+
+### Privacidade (RGPD)
+
+O site passa a guardar nomes, contactos e mensagens. Convém ter uma pequena
+nota de privacidade (quem guarda os dados, para quê, durante quanto tempo e
+como pedir a eliminação) e manter a folha/painel acessível só à Marta.
+
 ## Como publicar (gratuito) — GitHub Pages
 
 O site está preparado para o **GitHub Pages** (ficheiro `.nojekyll` incluído;
@@ -161,6 +218,8 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 3. A Marta envia a mensagem → confirma disponibilidade → a marcação está feita.
 4. O pedido fica guardado no telemóvel/computador do cliente, visível na
    **Área de Clientes** (com o código partilhado pela Marta).
+5. Se `formEndpoint` estiver preenchido, o pedido fica também guardado na
+   base de dados da Marta (Google Sheets ou Formspree).
 
 > Se mais à frente quiser marcações 100% automáticas (agenda com bloqueio de
 > horários, lembretes, etc.), o próximo passo é ligar o site a uma ferramenta

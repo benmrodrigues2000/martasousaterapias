@@ -1,7 +1,7 @@
 /* ============================================================
    Marta Sousa Terapias — main.js
    Menu mobile · WhatsApp · formulário de contacto ·
-   marcação online (WhatsApp + email + localStorage) ·
+   marcação online (WhatsApp + email + localStorage + base de dados) ·
    área de clientes.
 
    Todos os valores vêm de js/config.js (SITE).
@@ -62,7 +62,12 @@
       caBookNow: "Marcar agora",
       caStatus: "Aguarda confirmação",
       caResend: "Reenviar no WhatsApp",
-      caRemove: "Remover"
+      caRemove: "Remover",
+      ctIntroDb: "Preencha o formulário e a mensagem chega diretamente à Marta.",
+      ctSending: "A enviar…",
+      ctSentTitle: "Mensagem enviada",
+      ctSentText: "Obrigada! A Marta recebeu a sua mensagem e responde-lhe assim que possível.",
+      ctFailed: "Não foi possível enviar agora — vamos abrir o seu email com a mensagem pronta."
     },
     en: {
       menu: "Open menu",
@@ -91,7 +96,12 @@
       caBookNow: "Book now",
       caStatus: "Awaiting confirmation",
       caResend: "Resend on WhatsApp",
-      caRemove: "Remove"
+      caRemove: "Remove",
+      ctIntroDb: "Fill in the form and your message goes straight to Marta.",
+      ctSending: "Sending…",
+      ctSentTitle: "Message sent",
+      ctSentText: "Thank you! Marta has received your message and will reply as soon as possible.",
+      ctFailed: "We couldn't send it right now — your email app will open with the message ready."
     }
   };
   var t = T[isEN ? "en" : "pt"];
@@ -113,6 +123,43 @@
     return "mailto:" + cfg.email +
       "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(body);
+  }
+
+  /* ---------- base de dados dos formulários ----------
+     Envia os dados para SITE.formEndpoint (Google Sheets via Apps Script
+     ou Formspree). Devolve uma Promise que resolve true/false; nunca
+     rejeita, para que o fluxo WhatsApp/email continue sempre. */
+  var FORM_ENDPOINT = String(cfg.formEndpoint || "").trim();
+
+  function submitToDb(type, data) {
+    if (!FORM_ENDPOINT || typeof fetch !== "function") return Promise.resolve(false);
+    var payload = { type: type, lang: isEN ? "en" : "pt", page: location.pathname };
+    Object.keys(data).forEach(function (k) { payload[k] = data[k]; });
+
+    var isFormspree = /formspree\.io/i.test(FORM_ENDPOINT);
+    if (isFormspree) {
+      payload._subject = (type === "booking" ? "Marcação" : "Contacto") + " — " + (data.name || "");
+      if (data.email) payload._replyto = data.email;
+      payload._gotcha = payload.website || "";   /* anti-spam do Formspree */
+      delete payload.website;
+    }
+    var opts = {
+      method: "POST",
+      keepalive: true,
+      /* Apps Script: text/plain evita o pedido "preflight" de CORS. */
+      headers: isFormspree
+        ? { "Content-Type": "application/json", "Accept": "application/json" }
+        : { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    };
+    return fetch(FORM_ENDPOINT, opts)
+      .then(function (r) {
+        if (!r.ok) return false;
+        return r.json().then(function (j) {
+          return isFormspree ? j.ok !== false : j.ok === true;
+        }, function () { return true; });
+      })
+      .catch(function () { return false; });
   }
 
   /* Formata YYYY-MM-DD sem salto de fuso horário */
@@ -306,9 +353,40 @@
 
       var waBtn = el("contactWa");
       if (waBtn) waBtn.href = waUrl(body);
+      var mailHref = mailto(t.contactSubject.replace("{name}", name), body);
 
-      window.location.href = mailto(t.contactSubject.replace("{name}", name), body);
+      if (!FORM_ENDPOINT) {
+        window.location.href = mailHref;
+        return;
+      }
+
+      /* Com base de dados: envia diretamente; se falhar, recorre ao email. */
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var btnText = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = t.ctSending; }
+
+      submitToDb("contact", {
+        name: name, email: email, phone: phone, subject: subject, message: message,
+        website: (el("ctWebsite") && el("ctWebsite").value) || ""
+      }).then(function (ok) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnText; }
+        if (ok) {
+          var box = el("contactSuccess");
+          if (box) {
+            el("ctSuccessTitle").textContent = t.ctSentTitle;
+            el("ctSuccessText").textContent = t.ctSentText;
+            box.hidden = false;
+            box.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          contactForm.reset();
+        } else {
+          if (err) { err.textContent = t.ctFailed; err.classList.add("show"); }
+          setTimeout(function () { window.location.href = mailHref; }, 1200);
+        }
+      });
     });
+
+    if (FORM_ENDPOINT && el("contactIntro")) el("contactIntro").textContent = t.ctIntroDb;
   }
 
   /* ============================================================
@@ -475,6 +553,14 @@
       var list = loadBookings();
       list.unshift(booking);
       saveBookings(list);
+
+      /* Guarda também na base de dados (em segundo plano — o WhatsApp
+         continua a abrir de imediato, sem esperar pela resposta). */
+      submitToDb("booking", {
+        token: booking.token, name: name, phone: phone, email: email,
+        service: service, date: date, time: time, pref: pref, message: msg,
+        website: (el("bkWebsite") && el("bkWebsite").value) || ""
+      });
 
       /* Tenta abrir o WhatsApp (o botão do painel é o plano B) */
       window.open(waHref, "_blank");

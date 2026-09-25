@@ -103,9 +103,10 @@
 
           <div class="form-card reveal">
             <h2>Send me a message</h2>
-            <p class="muted small">Fill in the form and the message opens in your email app, ready to send.</p>
+            <p class="muted small" id="contactIntro">Fill in the form and the message opens in your email app, ready to send.</p>
             <div class="form-error" id="contactError"></div>
             <form id="contactForm" novalidate>
+              <div class="hp-field" aria-hidden="true"><label for="ctWebsite">Website</label><input type="text" id="ctWebsite" name="website" tabindex="-1" autocomplete="off"></div>
               <div class="form-row">
                 <div class="field">
                   <label for="ctName">Name *</label>
@@ -136,6 +137,10 @@
               <button type="submit" class="btn btn-primary btn-block">Send message</button>
               <p class="form-note form-note--tight">Prefer WhatsApp? You can also message me directly:</p>
               <a class="btn btn-ghost btn-block" id="contactWa" data-wa-default href="https://wa.me/351917005532" target="_blank" rel="noopener">Send via WhatsApp</a>
+              <div class="success-panel" id="contactSuccess" hidden role="status">
+                <h3 id="ctSuccessTitle"></h3>
+                <p id="ctSuccessText"></p>
+              </div>
             </form>
           </div>
 

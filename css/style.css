@@ -790,3 +790,6 @@ html.reveal-ready .faq-list > .reveal:nth-child(4){transition-delay:.27s}
   .faq-list summary{font-size:1rem}
   .whats-float{right:16px;bottom:16px;width:54px;height:54px}
 }
+
+/* Campo "armadilha" anti-spam dos formulários (invisível para pessoas) */
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
