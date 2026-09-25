@@ -33,7 +33,7 @@ IMAGES = {
 
 # contexto -> atributo sizes (tem de acompanhar css/style.css)
 SIZES = {
-    "logo":        "48px",   # cabeçalho
+    "logo":        "60px",   # cabeçalho
     "logo-footer": "72px",   # rodapé
     "hero":        "(max-width: 980px) calc(100vw - 48px), 520px",
     "about":       "(max-width: 980px) calc(100vw - 48px), 500px",
