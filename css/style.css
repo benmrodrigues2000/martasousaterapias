@@ -263,6 +263,11 @@ html.is-scrolled .site-header{
   padding:14px;box-shadow:var(--shadow-sm);
 }
 .about-media img{border-radius:var(--radius);width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:center 18%}
+/* nota discreta sob as imagens de ambiente (não são fotografias do espaço real) */
+.media-note{
+  margin:12px 2px 2px;text-align:center;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);
+}
 .about-copy p{color:#453D4E;max-width:56ch}
 .about-copy > p:first-of-type{font-size:1.06rem;color:#3C3446}
 .mini-list{list-style:none;margin:clamp(26px,3vw,36px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}

@@ -19,12 +19,11 @@ en/                   Versão em inglês das 6 páginas
 css/style.css         Estilos — sistema de design completo (ver abaixo)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
-images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
-                    principios-reiki.jpg) + ambiente (g2/g4/g5). As
-                    variantes responsivas (ex.: marta-sobre-480.jpg) são
-                    geradas por tools/make-responsive-images.sh
-                    (marta-espaco*.jpg — o cartaz dos cinco princípios — fica
-                    disponível no repositório, embora não seja usado hoje)
+images/               Fotografias reais da Marta e do espaço + ambiente
+                    (g2/g4/g5). As variantes responsivas (ex.: marta-sobre-480.jpg)
+                    são geradas por tools/make-responsive-images.sh.
+                    marta-espaco*.jpg (o cartaz dos cinco princípios) fica
+                    disponível no repositório, embora não seja usado hoje.
 tools/                Scripts auxiliares (imagens responsivas + srcset)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
@@ -109,6 +108,27 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade. As horas do
    dropdown vêm de `timeSlots` em `js/config.js`.
+7. **Imagens ilustrativas** — na página inicial, a imagem da secção *Sobre*
+   (`images/principios-reiki.jpg`) e a da secção *Princípios do Reiki*
+   (`images/marta-sobre.jpg`) **não são fotografias do espaço da Marta**: são
+   imagens de ambiente, geradas para dar o tom do site, e por isso aparecem
+   com a nota "Imagem ilustrativa" no canto inferior de cada moldura.
+   Para as substituir por fotografias reais, troque os dois ficheiros mantendo
+   o nome — `images/principios-reiki.jpg` (secção Sobre) e
+   `images/marta-sobre.jpg` (secção dos princípios) — e corra:
+
+   ```
+   bash tools/make-responsive-images.sh   # recria as variantes -480/-640/-600/-900
+   python3 tools/add-srcset.py            # repõe srcset/sizes/width/height coerentes
+   ```
+
+   Se as fotografias novas não tiverem as mesmas proporções (1200×900 e
+   783×900), atualize também as dimensões no dicionário `IMAGES` de
+   `tools/add-srcset.py` — é de lá que o `width`/`height` do HTML é reescrito —
+   e, se necessário, o `object-position` de `.about-media img` e
+   `.principios-media img` em `css/style.css` para escolher a parte visível.
+   Por fim, apague a linha `<p class="media-note">…</p>` de cada secção
+   (em `index.html` e `en/index.html`).
 
 ## Como publicar (gratuito) — GitHub Pages
 
