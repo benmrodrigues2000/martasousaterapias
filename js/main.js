@@ -25,7 +25,10 @@
     };
   }
 
-  var cfg = window.SITE;
+  /* `const SITE` is a global lexical binding, not a window property.
+     Read it directly when config.js loaded, while retaining the fallback
+     above for pages where the config request fails. */
+  var cfg = (typeof SITE !== "undefined") ? SITE : window.SITE;
   var isEN = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
   var MASTER_CODE = String(cfg.clientCode || "").toUpperCase();
 
@@ -78,6 +81,7 @@
       labelName: "Name", labelPhone: "Phone", labelEmail: "Email",
       labelService: "Service", labelDate: "Date", labelTime: "Time",
       labelPref: "Preferred contact", labelMsg: "Message",
+      subjectLabel: "Subject",
       contactSubject: "Website enquiry — {name}",
       bookingCodeLabel: "Booking code",
       mailSubjectPrefix: "Booking request — ",
@@ -213,6 +217,9 @@
   }
 
   /* ---------- reveal on scroll ---------- */
+  /* Progressive enhancement: without this class the CSS leaves content
+     visible, so a failed/disabled script cannot blank the page. */
+  document.documentElement.classList.add("reveal-ready");
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
     var io = new IntersectionObserver(function (entries) {
