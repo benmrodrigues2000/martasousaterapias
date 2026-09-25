@@ -163,6 +163,14 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 - Página de serviços: as quatro fotografias alternam de lado; a tabela de
   durações rola na horizontal em ecrãs pequenos.
 
+### Manutenção das páginas
+
+As 12 páginas partilham o mesmo cabeçalho e rodapé (marcação repetida, como é
+habitual num site estático). Ao alterar um link do menu, o logótipo, o rodapé
+ou o `srcset` do logótipo, faça a mesma alteração nas 12 páginas — ou rode
+`python3 tools/add-srcset.py` depois de mexer nas imagens, que trata dos
+atributos das fotografias em todas elas.
+
 ### Manutenção das imagens
 
 Depois de acrescentar ou trocar fotografias:
