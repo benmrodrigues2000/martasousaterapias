@@ -27,7 +27,7 @@ favicon.svg           Ícone
   WhatsApp com todos os dados (nome, serviço, data, hora…). A Marta só tem de
   enviar a mensagem para validar o pedido, e responde ao cliente para
   confirmar a disponibilidade. Há também opção de enviar por email.
-- **Área de Clientes**: com código de acesso (atualmente `MARTA2026`), mostra
+- **Área de Clientes**: com código de acesso (atualmente `MS2026`), mostra
   os pedidos de marcação feitos naquele dispositivo (localStorage), com
   botão de reenviar no WhatsApp e de remover. Inclui dicas de preparação
   da sessão e de autocuidado.
