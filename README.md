@@ -108,11 +108,10 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
 6. **Horários** — "segunda a sábado, por marcação" e as horas do formulário são
    por defeito; confirme se corresponde à sua disponibilidade. As horas do
    dropdown vêm de `timeSlots` em `js/config.js`.
-7. **Imagens ilustrativas** — na página inicial, a imagem da secção *Sobre*
+7. **Imagens de ambiente** — na página inicial, a imagem da secção *Sobre*
    (`images/principios-reiki.jpg`) e a da secção *Princípios do Reiki*
    (`images/marta-sobre.jpg`) **não são fotografias do espaço da Marta**: são
-   imagens de ambiente, geradas para dar o tom do site, e por isso aparecem
-   com a nota "Imagem ilustrativa" no canto inferior de cada moldura.
+   imagens de ambiente, geradas para dar o tom do site.
    Para as substituir por fotografias reais, troque os dois ficheiros mantendo
    o nome — `images/principios-reiki.jpg` (secção Sobre) e
    `images/marta-sobre.jpg` (secção dos princípios) — e corra:
@@ -127,8 +126,6 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
    `tools/add-srcset.py` — é de lá que o `width`/`height` do HTML é reescrito —
    e, se necessário, o `object-position` de `.about-media img` e
    `.principios-media img` em `css/style.css` para escolher a parte visível.
-   Por fim, apague a linha `<p class="media-note">…</p>` de cada secção
-   (em `index.html` e `en/index.html`).
 
 ## Como publicar (gratuito) — GitHub Pages
 

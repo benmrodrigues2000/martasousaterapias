@@ -47,7 +47,7 @@
   --font-body:"Jost","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
   --wa:#25D366;
 
-  --header-h:76px;
+  --header-h:88px;
   --container:1180px;
 }
 
@@ -162,7 +162,7 @@ html.is-scrolled .site-header{
 .header-inner{display:flex;align-items:center;gap:22px;height:var(--header-h)}
 .brand{display:flex;align-items:center;gap:12px;flex:none}
 .brand-mark{
-  width:48px;height:48px;flex:none;display:block;object-fit:contain;
+  width:60px;height:60px;flex:none;display:block;object-fit:contain;
   border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line);
 }
 .main-nav{display:flex;align-items:center;gap:clamp(18px,2.4vw,32px);margin-inline:auto}
@@ -263,11 +263,6 @@ html.is-scrolled .site-header{
   padding:14px;box-shadow:var(--shadow-sm);
 }
 .about-media img{border-radius:var(--radius);width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:center 18%}
-/* nota discreta sob as imagens de ambiente (não são fotografias do espaço real) */
-.media-note{
-  margin:12px 2px 2px;text-align:center;font-size:.72rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);
-}
 .about-copy p{color:#453D4E;max-width:56ch}
 .about-copy > p:first-of-type{font-size:1.06rem;color:#3C3446}
 .mini-list{list-style:none;margin:clamp(26px,3vw,36px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
