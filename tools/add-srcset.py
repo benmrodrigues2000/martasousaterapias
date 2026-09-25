@@ -31,16 +31,17 @@ IMAGES = {
     "marta-espaco.jpg":          ([600, 960], True, 1280, 720),
 }
 
-# contexto -> atributo sizes
+# contexto -> atributo sizes (tem de acompanhar css/style.css)
 SIZES = {
-    "logo":       "56px",
-    "hero":       "(max-width: 980px) calc(100vw - 48px), 520px",
-    "about":      "(max-width: 980px) calc(100vw - 48px), 487px",
-    "half":       "(max-width: 980px) calc(100vw - 48px), 532px",   # meia largura (1120/2 - gap)
-    "card":       "(max-width: 560px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 72px) / 2), 357px",
-    "gallery":    "(max-width: 560px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 66px) / 2), 361px",
-    "side-wide":  "(max-width: 980px) calc(100vw - 48px), 510px",
-    "side-narrow": "(max-width: 980px) calc(100vw - 48px), 435px",
+    "logo":        "48px",   # cabeçalho
+    "logo-footer": "72px",   # rodapé
+    "hero":        "(max-width: 980px) calc(100vw - 48px), 520px",
+    "about":       "(max-width: 980px) calc(100vw - 48px), 500px",
+    "half":        "(max-width: 980px) calc(100vw - 48px), 554px",   # meia largura (1180/2 - gap)
+    "card":        "(max-width: 640px) calc(100vw - 36px), (max-width: 980px) calc((100vw - 76px) / 2), 369px",
+    "gallery":     "(max-width: 980px) calc(100vw - 48px), 640px",   # faixa de ambiente
+    "side-wide":   "(max-width: 980px) calc(100vw - 48px), 520px",
+    "side-narrow": "(max-width: 980px) calc(100vw - 48px), 430px",
 }
 
 # marcador no HTML (a procurar para trás) -> contexto
@@ -51,8 +52,10 @@ MARKERS = [
     ("about-media", "about"),
     ("principios-media", "half"),
     ("side-photo", "side"),     # substituído por <page> abaixo
+    ("band-a", "gallery"),
+    ("band-b", "gallery"),
     ("<figure", "gallery"),
-    ('class="brand"', "logo"),
+    ('class="brand"', "logo"),  # cabeçalho — o rodapé é detetado abaixo
 ]
 
 # páginas cujo .svc-img pertence a um .service-block (meia largura)
@@ -63,6 +66,10 @@ ATTR_ORDER = [
     "class", "src", "srcset", "sizes", "alt", "width", "height",
     "loading", "decoding", "fetchpriority",
 ]
+
+# imagens usadas apenas no bloco de serviços (/servicos.html) usam o
+# mesmo sizes de meia largura
+
 
 IMG_RE = re.compile(r"<img\b[^>]*>", re.I | re.S)
 ATTR_RE = re.compile(r"""([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)')""")
@@ -78,6 +85,14 @@ def parse_attrs(tag):
     return attrs
 
 
+def inside_footer(html, pos):
+    """O logótipo do rodapé é maior do que o do cabeçalho."""
+    last_open = html.rfind("<footer", 0, pos)
+    if last_open == -1:
+        return False
+    return html.rfind("</footer>", 0, pos) < last_open
+
+
 def context_for(html, pos, rel_path):
     best_pos, best_ctx = -1, None
     for marker, ctx in MARKERS:
@@ -86,6 +101,8 @@ def context_for(html, pos, rel_path):
             best_pos, best_ctx = idx, ctx
     if best_ctx == "card" and rel_path in HALF_PAGES:
         best_ctx = "half"
+    if best_ctx == "logo" and inside_footer(html, pos):
+        best_ctx = "logo-footer"
     if best_ctx == "side":
         best_ctx = "side-wide" if rel_path in SIDE_WIDE_PAGES else "side-narrow"
     return best_ctx
@@ -120,8 +137,8 @@ def rewrite(rel_path, html):
         attrs["sizes"] = SIZES[ctx]
         attrs.setdefault("decoding", "async")
 
-        # logo do cabeçalho/rodapé: width/height já são o tamanho de exibição
-        if ctx != "logo":
+        # logótipo do cabeçalho/rodapé: width/height já são o tamanho de exibição
+        if not ctx.startswith("logo"):
             attrs["width"] = str(iw)
             attrs["height"] = str(ih)
         if ctx == "hero":

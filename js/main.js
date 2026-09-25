@@ -217,6 +217,19 @@
     document.querySelectorAll('a[href*="facebook.com"]').forEach(function (a) { a.href = cfg.facebook; });
   }
 
+  /* ---------- cabeçalho ao rolar ---------- */
+  /* O CSS deixa o cabeçalho transparente no topo da página e sólido
+     assim que a página se desloca. */
+  var scrolled = false;
+  function onScroll() {
+    var isDown = (window.scrollY || document.documentElement.scrollTop || 0) > 12;
+    if (isDown === scrolled) return;
+    scrolled = isDown;
+    document.documentElement.classList.toggle("is-scrolled", isDown);
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
   /* ---------- reveal on scroll ---------- */
   /* Progressive enhancement: without this class the CSS leaves content
      visible, so a failed/disabled script cannot blank the page. */
