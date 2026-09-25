@@ -39,7 +39,9 @@ body{
   font-weight:400;
   -webkit-font-smoothing:antialiased;
 }
-img{max-width:100%;display:block}
+/* Imagens fluidas por omissão. `height:auto` preserva a proporção
+   quando width/height vêm declarados no HTML (evita layout shift). */
+img{max-width:100%;height:auto;display:block}
 a{color:var(--lilac-deep);text-decoration:none}
 a:hover{color:var(--lilac-strong)}
 h1,h2,h3,h4{
@@ -279,20 +281,25 @@ img.brand-mark{border-radius:50%}
 .includes li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:#3B3540}
 .includes .tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lilac-soft);display:grid;place-items:center;margin-top:3px}
 .includes .tick svg{width:11px;height:11px;stroke:var(--lilac-deep);stroke-width:2.8;fill:none}
-.price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.price-tag{font-family:var(--font-head);font-size:1.9rem;color:var(--lilac-deep);font-weight:600}
-.price-note{font-size:.83rem;color:var(--faint);letter-spacing:.04em}
-
-/* ---------- tabela de preços ---------- */
-.price-table{width:100%;border-collapse:collapse;margin-top:10px}
-.price-table th{
+/* ---------- tabela de serviços ----------
+   .price-table mantém-se na lista de seletores para que a tabela de
+   preços volte a funcionar assim que os valores forem repostos. */
+.svc-table,.price-table{width:100%;border-collapse:collapse;margin-top:10px}
+.svc-table th,.price-table th{
   text-align:left;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
   font-weight:500;padding:0 14px 14px;border-bottom:1px solid var(--line);
 }
-.price-table td{padding:18px 14px;border-bottom:1px solid var(--line-soft);font-size:.97rem}
-.price-table tr:hover td{background:rgba(244,240,253,.5)}
-.price-table td.price{font-weight:500;color:var(--lilac-deep);white-space:nowrap}
+.svc-table td,.price-table td{padding:18px 14px;border-bottom:1px solid var(--line-soft);font-size:.97rem}
+.svc-table tr:hover td,.price-table tr:hover td{background:rgba(244,240,253,.5)}
 .table-note{font-size:.8rem;color:var(--faint);margin-top:14px}
+
+/* ---------- preços (desativados por agora) ----------
+   Os valores estão fora do site: SITE.showPrices = false em js/config.js.
+   Estas regras ficam guardadas para quando os preços voltarem. */
+.price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price-tag{font-family:var(--font-head);font-size:1.9rem;color:var(--lilac-deep);font-weight:600}
+.price-note{font-size:.83rem;color:var(--faint);letter-spacing:.04em}
+.price-table td.price{font-weight:500;color:var(--lilac-deep);white-space:nowrap}
 
 /* ---------- contacto ---------- */
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:start}

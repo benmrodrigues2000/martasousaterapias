@@ -6,7 +6,7 @@ Site estático (HTML + CSS + JS, sem dependências) criado a partir do briefing 
 
 ```
 index.html            Início
-servicos.html         Serviços + preços
+servicos.html         Serviços (duração e formato das sessões)
 faq.html              Perguntas frequentes
 contacto.html         Contacto + mapa + formulário
 marcacao.html         Marcação / reserva online
@@ -16,7 +16,10 @@ css/style.css         Estilos (paleta branco · lilás #A78BFA · negro)
 js/config.js          >>> PERSONALIZE AQUI <<<
 js/main.js            Lógica (menu, marcação, área de clientes)
 images/               Fotografias reais da Marta e do espaço (marta-*.jpg,
-                    principios-reiki.jpg) + ambiente (g2/g4/g5)
+                    principios-reiki.jpg) + ambiente (g2/g4/g5). As
+                    variantes responsivas (ex.: marta-sobre-480.jpg) são
+                    geradas por tools/make-responsive-images.sh
+tools/                Scripts auxiliares (imagens responsivas + srcset)
 favicon.svg           Ícone
 .nojekyll             GitHub Pages (serve os ficheiros tal como estão)
 ```
@@ -36,6 +39,10 @@ favicon.svg           Ícone
 - **Mapa** Google (Vila Nova de Gaia) na página de contacto.
 - **Versão em inglês** completa, com alternância PT ⇄ EN no cabeçalho.
 - **Formulário de contacto** (abre email pronto a enviar; alternativa por WhatsApp).
+- **Imagens responsivas**: cada fotografia tem variantes de largura mais
+  pequena (geradas por `tools/make-responsive-images.sh`) e é servida em
+  `srcset`/`sizes` com `width`/`height` declarados — o telemóvel descarrega
+  ficheiros muito mais leves e não há saltos de layout durante o carregamento.
 - SEO básico: meta tags, Open Graph e dados estruturados (LocalBusiness) na página inicial.
 - Nota legal no rodapé: "As terapias holísticas têm caráter complementar e não substituem o acompanhamento médico."
 
@@ -52,10 +59,15 @@ Tudo o que é indicado está marcado com `TODO` em **`js/config.js`**:
    - `address` e `mapQuery` em `js/config.js`
    - o `src` do `<iframe>` em `contacto.html` (e `en/contact.html`), ex.:
      `https://www.google.com/maps?q=Rua+Exemplo,+123,+Vila+Nova+de+Gaia&output=embed`
-4. **Preços** — os valores (50€/35€/35€/70€) são indicativos. Ajuste em
-   `js/config.js` (campo `price` de cada serviço — alimenta o dropdown do
-   formulário de marcação) e em `servicos.html` / `en/services.html` (textos
-   dos serviços + tabela de preços).
+4. **Preços** — *desativados por agora*. Os blocos de valor foram retirados de
+   `servicos.html` / `en/services.html` (essas páginas mostram apenas duração e
+   formato) e `showPrices` está a `false` em `js/config.js`, pelo que o preço
+   também não aparece no dropdown do formulário de marcação. Os valores
+   (50€/35€/35€/70€) continuam guardados no campo `price` de cada serviço em
+   `js/config.js` — para voltar a mostrá-los, reponha o markup dos preços nas
+   duas páginas de serviços e mude `showPrices` para `true`. As classes
+   `.price-row`, `.price-tag`, `.price-note` e `.price-table` continuam
+   disponíveis em `css/style.css`.
 5. **Logótipo** — o cabeçalho e o rodapé usam o emblema oficial em
    `images/logo.jpeg` (56 px no cabeçalho · 84 px no rodapé; ver `.brand-mark`
    em `css/style.css`). Para trocar pelo ficheiro original, basta substituir
