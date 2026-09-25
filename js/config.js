@@ -43,6 +43,16 @@ const SITE = {
     { pt: "Reiki + Tarot dos Anjos",    en: "Reiki + Angel Tarot",      minutes: 90, price: 70 }
   ],
 
+  /* Base de dados dos formulários (TODO: colar o URL — ver README,
+     secção "Base de dados dos formulários").
+     Aceita:
+       · Google Sheets — URL da Web App do Apps Script
+         (https://script.google.com/macros/s/.../exec)
+         usando tools/google-sheets-apps-script.gs
+       · Formspree — https://formspree.io/f/xxxxxxx
+     Vazio ("") = desligado: o site funciona como antes (WhatsApp/email). */
+  formEndpoint: "",
+
   /* Horas sugeridas no formulário (a Marta confirma a disponibilidade) */
   timeSlots: ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
 };
