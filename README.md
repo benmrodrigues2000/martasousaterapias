@@ -118,7 +118,7 @@ https://app.netlify.com/drop), Vercel ou Cloudflare Pages.
 
 ## Testes rápidos
 
-- Abrir `index.html` no navegador: navegação, botões, galeria, FAQ.
+- Abrir `index.html` no navegador: navegação, botões, FAQ.
 - Marcar sessão: preencher e submeter → deve abrir o WhatsApp com a mensagem.
 - Área de Clientes: código `MS2026` (ou o que definir em `config.js`).
 - Alternância PT ⇄ EN nos cabeçalhos.
